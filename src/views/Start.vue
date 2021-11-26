@@ -39,3 +39,14 @@ export default {
   }
 }
 </script>
+<<<<<<< Updated upstream
+=======
+
+<style>
+  body{
+    /*Adjusts the default font size to the window's width.
+    //Always define font size as a function of "em" anbd not of "px"*/
+    font-size: 2vw;
+  }
+</style>
+>>>>>>> Stashed changes
