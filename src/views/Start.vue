@@ -39,8 +39,6 @@ export default {
   }
 }
 </script>
-<<<<<<< Updated upstream
-=======
 
 <style>
   body{
@@ -49,4 +47,4 @@ export default {
     font-size: 2vw;
   }
 </style>
->>>>>>> Stashed changes
+
