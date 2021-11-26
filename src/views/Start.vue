@@ -42,8 +42,8 @@ export default {
 
 <style>
   body{
-    //Adjusts the default font size to the window's width.
-    //Always define font size as a function of "em" anbd not of "px"
+    /*Adjusts the default font size to the window's width.
+    Always define font size as a function of "em" anbd not of "px". /Otto*/
     font-size: 2vw;
   }
 </style>
