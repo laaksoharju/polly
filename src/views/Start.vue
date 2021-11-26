@@ -14,6 +14,8 @@
 import io from 'socket.io-client';
 const socket = io();
 
+document.title = "POLLS HERE, CREATE YOUR POLL HERE"
+
 export default {
   name: 'Start',
   data: function () {
