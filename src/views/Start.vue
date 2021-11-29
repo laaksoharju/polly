@@ -42,7 +42,7 @@ export default {
 
 <style>
 
-#nav{
+#nav {
   background-color: indigo;
 }
 </style>
