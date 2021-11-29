@@ -43,6 +43,6 @@ export default {
 <style>
 
 #nav{
-  background-color: brown;
+  background-color: indigo;
 }
 </style>
