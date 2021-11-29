@@ -47,6 +47,7 @@ export default {
 </script>
 
 <style>
+
 #head{
   height: 200px;
   width: 100%;
@@ -56,6 +57,10 @@ export default {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+#nav{
+  background-color: brown;
 }
 
 </style>
