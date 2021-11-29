@@ -1,3 +1,5 @@
+<!--Hej emil -->
+
 <template>
   <header id="head">
     <button id="bytsprak" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
