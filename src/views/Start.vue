@@ -64,6 +64,7 @@ export default {
 }
 
 #nav{
+
   background-color: indigo;
   color: white;
 }
