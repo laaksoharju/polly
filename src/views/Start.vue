@@ -1,38 +1,43 @@
 <template>
-  <header class="format">
+  <main class="theme">
+  <header>
     <div>
       <h1>MapQuiz</h1>
       <p>Welcome get your brain warmed up bishes</p>
-      <button id="LangButton" style  v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+      <button id="LangButton" style v-on:click="switchLanguage">{{ uiLabels.changeLanguage }}</button>
     </div>
 
   </header>
-<<<<<<< HEAD
 
-  <div id="nav">
-=======
-  <section>
-  <div id="nav">
-    <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
-    <button>
->>>>>>> 8de36eef5b81a0a3b7f14325e077b719f4ac73b8
-    <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
-    </button>
+
+
+  <section >
+    <div id="nav">
+      <button>
+        <router-link v-bind:to="'/poll/'+id" tag="button">{{ uiLabels.participatePoll }}</router-link>
+      </button>
+
+      <button>
+        <router-link v-bind:to="'/create/'+lang">{{ uiLabels.createPoll }}</router-link>
+      </button>
+    </div>
     <label>
-      Write poll id: 
+      Write poll id:
       <input type="text" v-model="id">
     </label>
-    <button>
-    <router-link v-bind:to="'/poll/'+id" tag="button">{{uiLabels.participatePoll}}</router-link>
-    </button>
-  </div>
   </section>
 
 
+
+  <footer>
+    please do not sue us Glöggkrök incorperated
+  </footer>
+  </main>
 </template>
 
 <script>
 import io from 'socket.io-client';
+
 const socket = io();
 
 export default {
@@ -50,7 +55,7 @@ export default {
     })
   },
   methods: {
-    switchLanguage: function() {
+    switchLanguage: function () {
       if (this.lang === "en")
         this.lang = "sv"
       else
@@ -60,25 +65,23 @@ export default {
   }
 }
 </script>
-<<<<<<< HEAD
+
 
 <style>
-#LangButton{
-  
+#LangButton {
+
+}
+.theme{
+  background-color: rgb(18, 50, 255);
+  color: white;
 }
 
-=======
-<style>
-
-
 #nav {
-  background-color: rgb(18, 50, 255);
-  color: #111010;
   display: grid;
-  grid-gap: 250px;
+  grid-gap: 300px;
+  margin-left: 325px;
   grid-template-columns: 100px 100px 100px;
 
   padding: 50px;
 }
->>>>>>> 8de36eef5b81a0a3b7f14325e077b719f4ac73b8
 </style>
