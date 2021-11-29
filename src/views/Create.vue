@@ -13,7 +13,7 @@
         <input v-for="(_, i) in answers"
                v-model="answers[i]"
                v-bind:key="'answer'+i">
-        <!--<button v-on:click="addAnswer">
+        <!--<button v-on:click="addAnswernm ">
           Add answer alternative
         </button>-->
       </div>
@@ -21,9 +21,15 @@
     <button v-on:click="addQuestion">
       Add question
     </button>
+    <br>
+    <button v-on:click="addWords">
+          Add another word
+        </button>
     <input type="number" v-model="questionNumber">
+    {{this.answers}}
     <button v-on:click="runQuestion">
       Run question
+
     </button>
     {{data}}
     <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
@@ -40,7 +46,7 @@ export default {
       lang: "",
       pollId: "",
       question: "",
-      answers: "",
+      answers: [""],
       questionNumber: 0,
       data: {},
       uiLabels: {}
@@ -70,6 +76,9 @@ export default {
     },
     runQuestion: function () {
       socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
+    },
+    addWords: function(){
+      console.log("hej")
     }
   }
 }
