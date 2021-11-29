@@ -3,40 +3,28 @@
   <header>
     <div>
       <h1>MapQuiz</h1>
-<<<<<<< HEAD
-      <p>Welcome get your brain warmed up bishes</p>
-      <button id="LangButton" style v-on:click="switchLanguage">{{ uiLabels.changeLanguage }}</button>
-=======
       <p>Welcome! Get your brain warmed up bishes</p>
       <button id="LangButton" style  v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
->>>>>>> 94566151d7bc150dce671709e983d52ff39f5401
     </div>
   </header>
 
-<<<<<<< HEAD
 
-
-  <section >
+  <section>
     <div id="nav">
+      <div>
       <button>
         <router-link v-bind:to="'/poll/'+id" tag="button">{{ uiLabels.participatePoll }}</router-link>
       </button>
+        <label>
+          Write poll id:
+          <input type="text" v-model="id">
+        </label>
+      </div>
 
       <button>
         <router-link v-bind:to="'/create/'+lang">{{ uiLabels.createPoll }}</router-link>
       </button>
     </div>
-=======
-  <section>
-  <div id="nav">
-    <button>
-    <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
-    </button>
->>>>>>> 94566151d7bc150dce671709e983d52ff39f5401
-    <label>
-      Write poll id:
-      <input type="text" v-model="id">
-    </label>
   </section>
 
 
@@ -59,6 +47,7 @@ export default {
       uiLabels: {},
       id: "",
       lang: "en"
+
     }
   },
   created: function () {
@@ -76,37 +65,31 @@ export default {
     }
   }
 }
+
+
+
+
 </script>
 
-<<<<<<< HEAD
 
 <style>
-#LangButton {
 
-}
 .theme{
   background-color: rgb(18, 50, 255);
   color: white;
 }
-=======
-<style>
-#LangButton{
-  margintop: 1 px;
-  marginright: 2 px;
+#LangButton {
+  margintop: 1px;
+  marginright: 2px;
   position: absolute;
   top: 20px;
   right: 20px;
-  
 }
-
->>>>>>> 94566151d7bc150dce671709e983d52ff39f5401
-
 #nav {
   display: grid;
   grid-gap: 300px;
   margin-left: 325px;
   grid-template-columns: 100px 100px 100px;
-
   padding: 50px;
 }
 </style>
