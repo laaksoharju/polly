@@ -1,6 +1,6 @@
 <template>
   <div>
-    Poll link: 
+    Poll link:
     <input type="text" v-model="pollId">
     <button v-on:click="createPoll">
       Create poll
@@ -10,8 +10,8 @@
       <input type="text" v-model="question">
       <div>
         Answers:
-        <input v-for="(_, i) in answers" 
-               v-model="answers[i]" 
+        <input v-for="(_, i) in answers"
+               v-model="answers[i]"
                v-bind:key="'answer'+i">
         <button v-on:click="addAnswer">
           Add answer alternative
@@ -26,14 +26,13 @@
       Run question
     </button>
     {{data}}
-    <router-link to="/result/">Check result</router-link>
+    <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
   </div>
 </template>
 
 <script>
 import io from 'socket.io-client';
 const socket = io();
-
 export default {
   name: 'Create',
   data: function () {
@@ -54,10 +53,10 @@ export default {
       this.uiLabels = labels
     })
     socket.on("dataUpdate", (data) =>
-      this.data = data
+        this.data = data
     )
     socket.on("pollCreated", (data) =>
-      this.data = data)
+        this.data = data)
   },
   methods: {
     createPoll: function () {
