@@ -8,10 +8,10 @@ function Data() {
 }
 
 /***********************************************
-For performance reasons, methods are added to the
-prototype of the Data object/class
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
-***********************************************/
+ For performance reasons, methods are added to the
+ prototype of the Data object/class
+ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+ ***********************************************/
 
 Data.prototype.getUILabels = function (lang = "en") {
   const ui = require("./data/labels-" + lang + ".json");
@@ -21,10 +21,10 @@ Data.prototype.getUILabels = function (lang = "en") {
 Data.prototype.createPoll = function(pollId, lang="en") {
   if (typeof this.polls[pollId] === "undefined") {
     let poll = {};
-    poll.lang = lang;  
+    poll.lang = lang;
     poll.questions = [];
     poll.answers = [];
-    poll.currentQuestion = 0;              
+    poll.currentQuestion = 0;
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
   }
@@ -80,6 +80,3 @@ Data.prototype.getAnswers = function(pollId) {
   return {}
 }
 module.exports = Data;
-
-
-

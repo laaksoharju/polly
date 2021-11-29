@@ -1,9 +1,19 @@
+<!--Hej emil -->
+
 <template>
+  <header id="head">
+    <button id="bytsprak" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+    <h1>
+      Header
+    </h1>
+  </header>
   <div id="nav">
-    <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+
     <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
     <label>
-      Write poll id: 
+
+      Write poll id:
+
       <input type="text" v-model="id">
     </label>
     <router-link v-bind:to="'/poll/'+id" tag="button">{{uiLabels.participatePoll}}</router-link>
@@ -39,3 +49,24 @@ export default {
   }
 }
 </script>
+
+<style>
+
+#head{
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+}
+#bytsprak{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#nav{
+
+  background-color: indigo;
+  color: white;
+}
+
+</style>
