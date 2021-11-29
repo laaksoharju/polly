@@ -6,7 +6,9 @@
       Write poll id: 
       <input type="text" v-model="id">
     </label>
+    <button>
     <router-link v-bind:to="'/poll/'+id" tag="button">{{uiLabels.participatePoll}}</router-link>
+    </button>
   </div>
 </template>
 
