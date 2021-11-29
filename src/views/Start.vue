@@ -39,3 +39,10 @@ export default {
   }
 }
 </script>
+
+<style>
+
+#nav{
+  background-color: brown;
+}
+</style>
