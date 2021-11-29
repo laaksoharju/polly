@@ -13,9 +13,9 @@
         <input v-for="(_, i) in answers" 
                v-model="answers[i]" 
                v-bind:key="'answer'+i">
-        <button v-on:click="addAnswer">
+        <!--<button v-on:click="addAnswer">
           Add answer alternative
-        </button>
+        </button>-->
       </div>
     </div>
     <button v-on:click="addQuestion">
@@ -41,7 +41,7 @@ export default {
       lang: "",
       pollId: "",
       question: "",
-      answers: ["", ""],
+      answers: "",
       questionNumber: 0,
       data: {},
       uiLabels: {}
