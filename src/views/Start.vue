@@ -2,10 +2,13 @@
   <header class="format">
     <div>
       <h1>MapQuiz</h1>
+      <p>Welcome get your brain warmed up bishes</p>
+      <button id="LangButton" style  v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
     </div>
+
   </header>
+
   <div id="nav">
-    <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
     <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
     <label>
       Write poll id: 
@@ -48,3 +51,10 @@ export default {
   }
 }
 </script>
+
+<style>
+#LangButton{
+  
+}
+
+</style>
