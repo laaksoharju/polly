@@ -1,4 +1,9 @@
 <template>
+  <header class="format">
+    <div>
+      <h1>MapQuiz</h1>
+    </div>
+  </header>
   <div id="nav">
     <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
     <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
@@ -8,6 +13,8 @@
     </label>
     <router-link v-bind:to="'/poll/'+id" tag="button">{{uiLabels.participatePoll}}</router-link>
   </div>
+
+
 </template>
 
 <script>
