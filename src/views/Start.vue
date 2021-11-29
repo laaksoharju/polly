@@ -60,7 +60,7 @@ export default {
 }
 
 #nav{
-  background-color: brown;
+  background-color: indigo;
 }
 
 </style>
