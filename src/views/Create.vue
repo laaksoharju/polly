@@ -6,7 +6,7 @@
       Create poll
     </button>
     <div>
-      {{uiLabels.question}}:
+
       <input type="text" v-model="question">
       <div>
         Answers:
