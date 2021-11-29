@@ -41,11 +41,7 @@ export default {
       lang: "",
       pollId: "",
       question: "",
-<<<<<<< HEAD
-      answers: "",
-=======
       answers: [""],
->>>>>>> simon
       questionNumber: 0,
       data: {},
       uiLabels: {}
