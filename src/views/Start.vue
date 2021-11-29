@@ -1,3 +1,4 @@
+<!-- Hej Simon <33-->
 <template>
   <div id="nav">
     <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
