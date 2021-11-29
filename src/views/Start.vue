@@ -1,6 +1,19 @@
 <template>
   <main class="theme">
+<<<<<<< HEAD
     <header>
+=======
+  <header>
+    <div class="container"><br>
+      <h1 id="headertext">MapQuiz</h1>
+      <p>Welcome!</p>
+      <button id="LangButton" style  v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+    </div>
+  </header>
+
+  <section>
+    <div id="nav">
+>>>>>>> 63ce546b8551c5b79fce6d88b21218922b26992b
       <div>
         <h1 id="headertext">MapQuiz</h1>
         <p>Welcome! Get your brain warmed up bishes</p>
@@ -8,6 +21,7 @@
       </div>
     </header>
 
+<<<<<<< HEAD
 
     <section>
 
@@ -40,6 +54,19 @@
     <footer class="buttom">
       please do not sue us Glöggkrök incorperated
     </footer>
+=======
+      <button>
+        <router-link v-bind:to="'/create/'+lang">{{ uiLabels.createPoll }}</router-link>
+      </button>
+    </div>
+
+  </section>
+
+
+  <footer class="buttom">
+    please do not sue us Glöggkrök incorperated
+  </footer>
+>>>>>>> 63ce546b8551c5b79fce6d88b21218922b26992b
   </main>
 </template>
 
@@ -83,7 +110,10 @@ export default {
 
 </script>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 63ce546b8551c5b79fce6d88b21218922b26992b
 <style>
 
 .theme {
@@ -96,7 +126,11 @@ export default {
   marginright: 2px;
 }
 
+<<<<<<< HEAD
 .format {
+=======
+.format{
+>>>>>>> 63ce546b8551c5b79fce6d88b21218922b26992b
   background-color: rgb(18, 50, 255);
   color: white;
 }
@@ -107,11 +141,17 @@ export default {
 
 .container {
 }
+<<<<<<< HEAD
 
 #LangButton {
   margintop: 10px;
   marginright: 10px;
 
+=======
+#LangButton{
+  margintop: 10 px;
+  marginright: 10 px;
+>>>>>>> 63ce546b8551c5b79fce6d88b21218922b26992b
   position: absolute;
   top: 20px;
   right: 20px;
