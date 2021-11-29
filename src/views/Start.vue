@@ -7,9 +7,17 @@
     </div>
 
   </header>
+<<<<<<< HEAD
 
   <div id="nav">
+=======
+  <section>
+  <div id="nav">
+    <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+    <button>
+>>>>>>> 8de36eef5b81a0a3b7f14325e077b719f4ac73b8
     <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
+    </button>
     <label>
       Write poll id: 
       <input type="text" v-model="id">
@@ -18,6 +26,7 @@
     <router-link v-bind:to="'/poll/'+id" tag="button">{{uiLabels.participatePoll}}</router-link>
     </button>
   </div>
+  </section>
 
 
 </template>
@@ -51,10 +60,25 @@ export default {
   }
 }
 </script>
+<<<<<<< HEAD
 
 <style>
 #LangButton{
   
 }
 
+=======
+<style>
+
+
+#nav {
+  background-color: rgb(18, 50, 255);
+  color: #111010;
+  display: grid;
+  grid-gap: 250px;
+  grid-template-columns: 100px 100px 100px;
+
+  padding: 50px;
+}
+>>>>>>> 8de36eef5b81a0a3b7f14325e077b719f4ac73b8
 </style>
