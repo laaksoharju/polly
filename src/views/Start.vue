@@ -2,20 +2,14 @@
   <header class="format">
     <div>
       <h1>MapQuiz</h1>
-      <p>Welcome get your brain warmed up bishes</p>
+      <p>Welcome! Get your brain warmed up bishes</p>
       <button id="LangButton" style  v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
     </div>
-
   </header>
-<<<<<<< HEAD
 
-  <div id="nav">
-=======
   <section>
   <div id="nav">
-    <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
     <button>
->>>>>>> 8de36eef5b81a0a3b7f14325e077b719f4ac73b8
     <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
     </button>
     <label>
@@ -60,15 +54,16 @@ export default {
   }
 }
 </script>
-<<<<<<< HEAD
 
 <style>
 #LangButton{
+  margintop: 1 px;
+  marginright: 2 px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
   
 }
-
-=======
-<style>
 
 
 #nav {
@@ -80,5 +75,4 @@ export default {
 
   padding: 50px;
 }
->>>>>>> 8de36eef5b81a0a3b7f14325e077b719f4ac73b8
 </style>
