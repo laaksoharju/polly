@@ -1,19 +1,12 @@
 <template>
   <main class="theme">
-  <header>
-    <div>
-      <h1>MapQuiz</h1>
-<<<<<<< HEAD
+  <header class="format">
+    <div class="container"><br>
+      <h1 id="headertext">MapQuiz</h1>
       <p>Welcome get your brain warmed up bishes</p>
       <button id="LangButton" style v-on:click="switchLanguage">{{ uiLabels.changeLanguage }}</button>
-=======
-      <p>Welcome! Get your brain warmed up bishes</p>
-      <button id="LangButton" style  v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
->>>>>>> 94566151d7bc150dce671709e983d52ff39f5401
     </div>
   </header>
-
-<<<<<<< HEAD
 
 
   <section >
@@ -26,13 +19,6 @@
         <router-link v-bind:to="'/create/'+lang">{{ uiLabels.createPoll }}</router-link>
       </button>
     </div>
-=======
-  <section>
-  <div id="nav">
-    <button>
-    <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
-    </button>
->>>>>>> 94566151d7bc150dce671709e983d52ff39f5401
     <label>
       Write poll id:
       <input type="text" v-model="id">
@@ -40,8 +26,7 @@
   </section>
 
 
-
-  <footer>
+  <footer class="buttom">
     please do not sue us Glöggkrök incorperated
   </footer>
   </main>
@@ -78,29 +63,28 @@ export default {
 }
 </script>
 
-<<<<<<< HEAD
-
 <style>
-#LangButton {
 
-}
 .theme{
   background-color: rgb(18, 50, 255);
   color: white;
 }
-=======
-<style>
+.format{
+  background-color: rgb(18, 50, 255);
+  color: white;
+}
+.buttom{
+  margin-top: 500px;
+}
+.container{
+}
 #LangButton{
-  margintop: 1 px;
-  marginright: 2 px;
+  margintop: 10 px;
+  marginright: 10 px;
   position: absolute;
   top: 20px;
   right: 20px;
-  
 }
-
->>>>>>> 94566151d7bc150dce671709e983d52ff39f5401
-
 #nav {
   display: grid;
   grid-gap: 300px;
@@ -109,4 +93,9 @@ export default {
 
   padding: 50px;
 }
+#headertext{
+  font-size: 300%;
+
+}
+
 </style>
