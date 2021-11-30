@@ -1,33 +1,64 @@
 <template>
-  <div>
-    Poll link: 
-    <input type="text" v-model="pollId">
-    <button v-on:click="createPoll">
-      Create poll
-    </button>
-    <div>
-      {{uiLabels.question}}:
-      <input type="text" v-model="question">
-      <div>
-        Answers:
-        <input v-for="(_, i) in answers" 
-               v-model="answers[i]" 
-               v-bind:key="'answer'+i">
-        <button v-on:click="addAnswer">
-          Add answer alternative
+
+  <section id="window">
+
+    <section id="header">
+      <div class="inputBox">
+        <input class="innerInput"
+               type="text"
+               v-model="pollId"
+               placeholder="Your Poll Link">
+        <button v-on:click="createPoll">
+          Create poll
         </button>
       </div>
-    </div>
-    <button v-on:click="addQuestion">
-      Add question
-    </button>
-    <input type="number" v-model="questionNumber">
-    <button v-on:click="runQuestion">
-      Run question
-    </button>
-    {{data}}
-    <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
-  </div>
+    </section>
+
+    <section id="page">
+
+      <nav>
+        Question
+        <br />
+        Number
+        <br />
+        <input class="singleInput"
+               type="number"
+               v-model="questionNumber">
+        <button v-on:click="addQuestion">
+          Add question
+        </button>
+      </nav>
+
+      <main>
+        <div>
+          {{uiLabels.question}}:
+          <input class="singleInput" type="text" v-model="question">
+          <div>
+            Answers:
+            <input class="singleInput"
+                   v-for="(_, i) in answers"
+                   v-model="answers[i]"
+                   v-bind:key="'answer'+i">
+            <button v-on:click="addAnswer">
+              Add answer alternative
+            </button>
+          </div>
+        </div>
+
+        <button v-on:click="runQuestion">
+          Run question
+        </button>
+      </main>
+
+      <option>
+        {{data}}
+        <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
+      </option>
+
+    </section>
+
+  </section>
+
 </template>
 
 <script>
@@ -75,3 +106,139 @@ export default {
   }
 }
 </script>
+
+
+<style>
+/*Page config*/
+
+#window {
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Cdefs%3E%3Crect stroke='%23ffffff' stroke-width='0.5' width='1' height='1' id='s'/%3E%3Cpattern id='a' width='3' height='3' patternUnits='userSpaceOnUse' patternTransform='scale(35.3) translate(-971.67 -728.75)'%3E%3Cuse fill='%23fcfcfc' href='%23s' y='2'/%3E%3Cuse fill='%23fcfcfc' href='%23s' x='1' y='2'/%3E%3Cuse fill='%23fafafa' href='%23s' x='2' y='2'/%3E%3Cuse fill='%23fafafa' href='%23s'/%3E%3Cuse fill='%23f7f7f7' href='%23s' x='2'/%3E%3Cuse fill='%23f7f7f7' href='%23s' x='1' y='1'/%3E%3C/pattern%3E%3Cpattern id='b' width='7' height='11' patternUnits='userSpaceOnUse' patternTransform='scale(35.3) translate(-971.67 -728.75)'%3E%3Cg fill='%23f5f5f5'%3E%3Cuse href='%23s'/%3E%3Cuse href='%23s' y='5' /%3E%3Cuse href='%23s' x='1' y='10'/%3E%3Cuse href='%23s' x='2' y='1'/%3E%3Cuse href='%23s' x='2' y='4'/%3E%3Cuse href='%23s' x='3' y='8'/%3E%3Cuse href='%23s' x='4' y='3'/%3E%3Cuse href='%23s' x='4' y='7'/%3E%3Cuse href='%23s' x='5' y='2'/%3E%3Cuse href='%23s' x='5' y='6'/%3E%3Cuse href='%23s' x='6' y='9'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='h' width='5' height='13' patternUnits='userSpaceOnUse' patternTransform='scale(35.3) translate(-971.67 -728.75)'%3E%3Cg fill='%23f5f5f5'%3E%3Cuse href='%23s' y='5'/%3E%3Cuse href='%23s' y='8'/%3E%3Cuse href='%23s' x='1' y='1'/%3E%3Cuse href='%23s' x='1' y='9'/%3E%3Cuse href='%23s' x='1' y='12'/%3E%3Cuse href='%23s' x='2'/%3E%3Cuse href='%23s' x='2' y='4'/%3E%3Cuse href='%23s' x='3' y='2'/%3E%3Cuse href='%23s' x='3' y='6'/%3E%3Cuse href='%23s' x='3' y='11'/%3E%3Cuse href='%23s' x='4' y='3'/%3E%3Cuse href='%23s' x='4' y='7'/%3E%3Cuse href='%23s' x='4' y='10'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='c' width='17' height='13' patternUnits='userSpaceOnUse' patternTransform='scale(35.3) translate(-971.67 -728.75)'%3E%3Cg fill='%23f2f2f2'%3E%3Cuse href='%23s' y='11'/%3E%3Cuse href='%23s' x='2' y='9'/%3E%3Cuse href='%23s' x='5' y='12'/%3E%3Cuse href='%23s' x='9' y='4'/%3E%3Cuse href='%23s' x='12' y='1'/%3E%3Cuse href='%23s' x='16' y='6'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='d' width='19' height='17' patternUnits='userSpaceOnUse' patternTransform='scale(35.3) translate(-971.67 -728.75)'%3E%3Cg fill='%23ffffff'%3E%3Cuse href='%23s' y='9'/%3E%3Cuse href='%23s' x='16' y='5'/%3E%3Cuse href='%23s' x='14' y='2'/%3E%3Cuse href='%23s' x='11' y='11'/%3E%3Cuse href='%23s' x='6' y='14'/%3E%3C/g%3E%3Cg fill='%23efefef'%3E%3Cuse href='%23s' x='3' y='13'/%3E%3Cuse href='%23s' x='9' y='7'/%3E%3Cuse href='%23s' x='13' y='10'/%3E%3Cuse href='%23s' x='15' y='4'/%3E%3Cuse href='%23s' x='18' y='1'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='e' width='47' height='53' patternUnits='userSpaceOnUse' patternTransform='scale(35.3) translate(-971.67 -728.75)'%3E%3Cg fill='%2356CEFF'%3E%3Cuse href='%23s' x='2' y='5'/%3E%3Cuse href='%23s' x='16' y='38'/%3E%3Cuse href='%23s' x='46' y='42'/%3E%3Cuse href='%23s' x='29' y='20'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='f' width='59' height='71' patternUnits='userSpaceOnUse' patternTransform='scale(35.3) translate(-971.67 -728.75)'%3E%3Cg fill='%2356CEFF'%3E%3Cuse href='%23s' x='33' y='13'/%3E%3Cuse href='%23s' x='27' y='54'/%3E%3Cuse href='%23s' x='55' y='55'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='g' width='139' height='97' patternUnits='userSpaceOnUse' patternTransform='scale(35.3) translate(-971.67 -728.75)'%3E%3Cg fill='%2356CEFF'%3E%3Cuse href='%23s' x='11' y='8'/%3E%3Cuse href='%23s' x='51' y='13'/%3E%3Cuse href='%23s' x='17' y='73'/%3E%3Cuse href='%23s' x='99' y='57'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23b)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23h)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23c)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23d)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23e)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23f)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23g)' width='100%25' height='100%25'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  height: 97vh;
+  margin:-10px
+}
+
+#header {
+  grid-area: header;
+  background-color: #54c6f4;
+  padding: 25px;
+  margin-bottom: 20px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12)
+}
+
+#page {
+  display: grid;
+  width: 90%;
+  max-width: 1350px;
+  height: 80%;
+  margin: auto;
+  grid-template: "nav    main"
+                 "nav  option";
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr 7fr;
+  grid-row-gap: 5px;
+  grid-column-gap: 5px;
+}
+
+#page > nav {
+  grid-area: nav;
+  background-color: #fffffe;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 10px 20px rgba(0, 0, 0, 0.12);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding: 20px 20px 20px 30px;
+}
+
+#page > main {
+  grid-area: main;
+  background-color: #fffffe;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 10px 20px rgba(0, 0, 0, 0.12);
+  border-top-right-radius: 20px;
+  padding: 20px 30px 20px 20px;
+}
+
+#page > option {
+  grid-area: option;
+  background-color: #fffffe;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 10px 20px rgba(0, 0, 0, 0.12);
+  border-bottom-right-radius: 20px;
+  padding: 20px 30px 20px 20px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: x-large;
+  margin: 20px;
+}
+
+h2 {
+  text-align: center;
+  padding-bottom: 10px;
+  margin: 10px;
+}
+
+h4 {
+  text-align: center;
+  margin: 5px;
+}
+
+button {
+  background-color: #03b6ff;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 0.55em 1.5em;
+  margin: 0.2em;
+  color: white;
+  font-size: clamp(14px, calc(0.875rem + ((1vw - 5.76px) * 0.641)), 18px);
+}
+
+button:hover{
+  background-color: #02acf6;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 0.55em 1.5em;
+}
+
+.singleInput {
+  border: solid #e7e6e6 2px;
+  background-color: #f2f2f2;
+  flex: 1;
+  margin: 0.2em 0.2em 0.2em 0.2em;
+  padding: 0.8em 0 0.8em 1em;
+  box-shadow: none;
+  border-radius: 12px;
+  color: #a8a8a8;
+  font-size: clamp(14px, calc(0.875rem + ((1vw - 5.76px) * 0.641)), 18px);
+}
+
+.inputBox {
+  display: flex;
+  background-color: #f2f2f2;
+  border: none;
+  margin: auto;
+  width: 400px;
+  height: 50px;
+  border-radius: 12px;
+}
+
+.inputBox .innerInput {
+  border: none;
+  background-color: #f2f2f2;
+  width: 50px;
+  flex: 1;
+  padding: 0.8em 0 0.8em 1em;
+  box-shadow: none;
+  border-radius: 12px 0 0 12px;
+  color: #a8a8a8;
+  font-size: clamp(14px, calc(0.875rem + ((1vw - 5.76px) * 0.641)), 18px);
+}
+
+/*Main section config*/
+
+</style>
