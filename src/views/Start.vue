@@ -14,14 +14,27 @@
     </section>
 
     <div id="nav">
-
-      <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
+      <router-link
+          class="routerLink"
+          v-bind:to="'/create/'+lang">
+        {{uiLabels.createPoll}}
+      </router-link>
       <label>
-
-        <input class="singleInput" type="text" v-model="id" placeholder="Write poll link to join">
+        <input class="singleInput"
+               type="text"
+               v-model="id"
+               placeholder="Write poll link to join">
       </label>
-      <router-link v-bind:to="'/poll/'+id" tag="button">{{uiLabels.participatePoll}}</router-link>
-      <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+      <router-link
+          class="routerLink"
+          v-bind:to="'/poll/'+id"
+          tag="button">
+        {{uiLabels.participatePoll}}
+      </router-link>
+      <button
+          v-on:click="switchLanguage">
+        {{uiLabels.changeLanguage}}
+      </button>
     </div>
   </section>
 

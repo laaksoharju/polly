@@ -1,9 +1,6 @@
 ## To do
-- [ ] Grid layout for every page
-- [ ]
-
-
-
+- [x] Grid layout for every page (main.css)
+- [ ] 
 
 
 ## Later

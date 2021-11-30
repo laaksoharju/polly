@@ -55,7 +55,11 @@
 
       <option>
         {{data}}
-        <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
+        <router-link
+            class="routerLink"
+            v-bind:to="'/result/'+pollId">
+          Check result
+        </router-link>
       </option>
 
     </section>
