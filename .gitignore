@@ -22,3 +22,7 @@ pnpm-debug.log*
 *.sln
 *.sw?
 package-lock.json
+.project
+.settings/.jsdtscope
+.settings/org.eclipse.wst.jsdt.ui.superType.container
+.settings/org.eclipse.wst.jsdt.ui.superType.name

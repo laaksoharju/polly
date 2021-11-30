@@ -117,6 +117,7 @@ export default {
   background-attachment: fixed;
   background-size: cover;
   height: 97vh;
+  max-width: 100vw;
   margin:-10px
 }
 
