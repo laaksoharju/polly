@@ -39,6 +39,9 @@
                    v-for="(_, i) in answers"
                    v-model="answers[i]"
                    v-bind:key="'answer'+i">
+            <button id="remove" v-on:click="removeAnswer">
+              x
+            </button>
             <button v-on:click="addAnswer">
               Add answer alternative
             </button>
@@ -96,6 +99,11 @@ export default {
     },
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )
+    },
+    removeAnswer: function () {
+      if (this.answers.length > 1){
+        this.answers.pop();
+      }
     },
     addAnswer: function () {
       this.answers.push("");
@@ -204,6 +212,15 @@ button:hover{
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
   border-radius: 10px;
   padding: 0.55em 1.5em;
+}
+
+#remove{
+  background-color: #FF0000;
+  padding: 0.55em 1em;
+}
+
+#remove:hover{
+  background-color: #C40000;
 }
 
 .singleInput {
