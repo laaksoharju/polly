@@ -14,6 +14,8 @@
 import io from 'socket.io-client';
 const socket = io();
 
+document.title = "POLLS HERE, CREATE YOUR POLL HERE"
+
 export default {
   name: 'Start',
   data: function () {
@@ -42,6 +44,8 @@ export default {
 
 <style>
   body{
+    /*Adjusts the default font size to the window's width.
+    Always define font size as a function of "em" anbd not of "px". /Otto*/
     font-size: 2vw;
   }
 </style>
