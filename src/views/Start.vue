@@ -2,28 +2,33 @@
 
   <section id="window">
     <section id="header">
-      <div class="inputBox">
-        <input class="innerInput"
-               type="text"
-               v-model="pollId"
-               placeholder="Choose your poll link">
-        <button v-on:click="createPoll">
-          Create poll
+      <leftHeader>
+
+      </leftHeader>
+
+      <midHeader>
+        <router-link
+            class="routerLink white"
+            v-bind:to="'/create/'+lang">
+          {{uiLabels.createPoll_new}}
+        </router-link>
+      </midHeader>
+
+      <rightHeader>
+        <button v-on:click="switchLanguage">
+          {{ uiLabels.changeLanguage }}
         </button>
-      </div>
+      </rightHeader>
+
     </section>
 
     <div id="nav">
-      <router-link
-          class="routerLink"
-          v-bind:to="'/create/'+lang">
-        {{uiLabels.createPoll}}
-      </router-link>
+
       <label>
         <input class="singleInput"
                type="text"
                v-model="id"
-               placeholder="Write poll link to join">
+               :placeholder="uiLabels.joinPollLink">
       </label>
       <router-link
           class="routerLink"
@@ -31,10 +36,6 @@
           tag="button">
         {{uiLabels.participatePoll}}
       </router-link>
-      <button
-          v-on:click="switchLanguage">
-        {{uiLabels.changeLanguage}}
-      </button>
     </div>
   </section>
 

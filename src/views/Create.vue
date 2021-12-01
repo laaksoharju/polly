@@ -3,15 +3,28 @@
   <section id="window">
 
     <section id="header">
-      <div class="inputBox">
-        <input class="innerInput"
-               type="text"
-               v-model="pollId"
-               placeholder="Choose your poll link">
-        <button v-on:click="createPoll">
-          Create poll
+      <leftHeader>
+
+      </leftHeader>
+
+      <midHeader>
+        <div class="inputBox">
+          <input class="innerInput"
+                 type="text"
+                 v-model="pollId"
+                 :placeholder="uiLabels.setPollLink">
+          <button v-on:click="createPoll">
+            {{ uiLabels.createPoll_save }}
+          </button>
+        </div>
+      </midHeader>
+
+      <rightHeader>
+        <button v-on:click="switchLanguage">
+          {{ uiLabels.changeLanguage }}
         </button>
-      </div>
+      </rightHeader>
+
     </section>
 
     <section id="page">

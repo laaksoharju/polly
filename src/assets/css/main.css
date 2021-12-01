@@ -11,13 +11,30 @@
 }
 
 #header {
-    grid-area: header;
+    display: grid;
+    grid-template: "leftHeader midHeader rightHeader";
+    grid-template-columns: 1fr 1fr 1fr;
     background-color: #54c6f4;
     padding: 25px;
     margin-bottom: 20px;
     color: white;
     text-align: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12)
+}
+
+#header > leftHeader {
+    grid-area: leftHeader;
+}
+
+#header > midHeader {
+    grid-area: midHeader;
+    margin: auto;
+}
+
+#header > rightHeader {
+    grid-area: rightHeader;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 #page {
@@ -79,7 +96,7 @@ h4 {
 
 button {
     background-color: #03b6ff;
-    border: none;
+    border: solid 1px rgba(255, 255, 255, 0.15);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
     border-radius: 10px;
     padding: 0.55em 1.5em;
@@ -105,12 +122,12 @@ button:hover{
 }
 
 .routerLink {
-    background-color: white;
     border: solid #c2c2c2 2px;
     border-radius: 10px;
     padding: 0.55em 1.5em !important;
-    margin: 0.2em;
+    margin: auto;
     text-decoration: none;
+    font-weight: bold;
     color: #a1a1a1 !important;
     font-size: clamp(14px, calc(0.875rem + ((1vw - 5.76px) * 0.641)), 18px);
 }
@@ -118,6 +135,17 @@ button:hover{
 .routerLink:hover {
     background-color: ghostwhite;
     border: solid #a8a8a8 2px;
+}
+
+.routerLink.white {
+    border: solid #f1f1f1 3px;
+    color: #ffffff !important;
+}
+
+.routerLink.white:hover {
+    background-color: #ffffff;
+    border: solid #03b6ff 3px;
+    color: #03b6ff !important;
 }
 
 .singleInput {
@@ -137,7 +165,7 @@ button:hover{
     background-color: #f2f2f2;
     border: none;
     margin: auto;
-    width: 400px;
+    width: 450px;
     height: 50px;
     border-radius: 12px;
 }

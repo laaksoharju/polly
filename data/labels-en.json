@@ -1,8 +1,11 @@
 {
-	"sales-pitch": "Simply. Great. Polling.",
+	"changeLanguage": "Byt till Svenska",
+	"createPoll_new": "Create your own poll",
+	"createPoll_save": "Save and publish",
 	"invite": "Invite participants with this link:",
-	"createPoll": "Create poll",
+	"joinPollLink": "Write poll link to join",
 	"participatePoll": "Participate in poll",
 	"question": "Question",
-	"changeLanguage": "Byt till svenska"
+	"sales-pitch": "Simply. Great. Polling.",
+	"setPollLink": "Set your own poll link"
 }
