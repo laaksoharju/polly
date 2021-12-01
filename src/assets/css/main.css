@@ -24,6 +24,7 @@
 
 #header > leftHeader {
     grid-area: leftHeader;
+    margin: auto auto auto 0;
 }
 
 #header > midHeader {
@@ -33,8 +34,7 @@
 
 #header > rightHeader {
     grid-area: rightHeader;
-    margin-left: auto;
-    margin-right: 0;
+    margin: auto 0 auto auto;
 }
 
 #page {

@@ -3,7 +3,7 @@
   <section id="window">
     <section id="header">
       <leftHeader>
-
+        P-o-l-l-yyyyyyyyyyy!
       </leftHeader>
 
       <midHeader>
