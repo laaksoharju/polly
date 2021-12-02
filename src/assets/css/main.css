@@ -187,4 +187,16 @@ button:hover{
     font-size: clamp(14px, calc(0.875rem + ((1vw - 5.76px) * 0.641)), 18px);
 }
 
+#questionInput{
+  width: 100%;
+  display: flex;
+  margin: 1em 0 1em -0.3em;
+}
+#answerInput{
+}
+
+.infoText{
+  margin: 0em 0em -0.5em 0em;
+}
+
 /*Main section config*/
