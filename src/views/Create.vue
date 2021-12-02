@@ -137,6 +137,14 @@ export default {
     },
     runQuestion: function () {
       socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
+    },
+    //copied from Start.vue:
+    switchLanguage: function() {
+      if (this.lang === "en")
+        this.lang = "sv"
+      else
+        this.lang = "en"
+      socket.emit("switchLanguage", this.lang)
     }
   }
 }
