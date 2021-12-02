@@ -126,12 +126,13 @@ export default {
       }
     },
     addAnswer: function () {
-      if (this.answers.length < 9){
-        this.answers.push("");
-      }
-      else{
+      if (this.answers.length == 8){
         document.getElementById("answerAdd").innerHTML = "Max number of answers reached";
         document.getElementById("answerAdd").style.background = "#cccccc";
+        this.answers.push("");
+      }
+      else if (this.answers.length < 9){
+        this.answers.push("");
       }
     },
     runQuestion: function () {
