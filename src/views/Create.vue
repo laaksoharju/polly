@@ -30,9 +30,9 @@
     <section id="page">
 
       <nav>
-        Question
+        {{ uiLabels.question }}
         <br />
-        Number
+        {{ uiLabels.numberSv }}
         <br />
         <input class="singleInput"
                type="number"
@@ -47,7 +47,7 @@
           {{uiLabels.question}}:
           <input class="singleInput" type="text" v-model="question">
           <div>
-            Answers:
+           + {{ uiLabels.answersSv }}
             <input class="singleInput"
                    v-for="(_, i) in answers"
                    v-model="answers[i]"
