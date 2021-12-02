@@ -1,11 +1,16 @@
 {
 	"changeLanguage": "Change to English",
-	"createPoll_new": "Create your own poll (sv)",
-	"createPoll_save": "Save and publish (sv)",
+	"createPoll_new": "Skapa din egen polly",
+	"createPoll_save": "Spara och publicera",
 	"invite": "Bjud in deltagare med den här länken:",
-	"joinPollLink": "Write poll link to join (sv)",
+	"joinPollLink": "Ange pollylänk för att ansluta",
 	"participatePoll": "Delta i röstning",
 	"question": "Fråga",
 	"sales-pitch": "Svar. Helt. Enkelt.",
-	"setPollLink": "Set your own poll link (sv)"
+	"setPollLink": "Skapa en pollylänk",
+	"answersSv": "Svar:",
+	"numberSv": "Nummer",
+	"addQ": "Lägg till fråga",
+	"addAalternative": "Lägg till svarsalternativ",
+	"runQ": "Kör fråga"
 }
