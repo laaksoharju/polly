@@ -10,7 +10,7 @@
         <router-link
             class="routerLink white"
             v-bind:to="'/create/'+lang">
-          {{uiLabels.createPoll_new}}
+          + {{uiLabels.createPoll_new}}
         </router-link>
       </midHeader>
 

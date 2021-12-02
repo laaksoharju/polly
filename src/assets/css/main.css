@@ -103,6 +103,7 @@ button {
     margin: 0.2em;
     color: white;
     font-size: clamp(14px, calc(0.875rem + ((1vw - 5.76px) * 0.641)), 18px);
+    font-weight: bold;
 }
 
 button:hover{
@@ -146,7 +147,7 @@ button:hover{
 
 .routerLink.white:hover {
     background-color: #ffffff;
-    border: solid #03b6ff 3px;
+    border: solid #e7e7e7 3px;
     color: #03b6ff !important;
 }
 
