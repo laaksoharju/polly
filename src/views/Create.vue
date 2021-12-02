@@ -51,10 +51,11 @@
             Answers:
           </div>
             <br>
-            <input class="singleInput"
+            <input id = "answerInput" class="singleInput"
                    v-for="(_, i) in answers"
                    v-model="answers[i]"
                    v-bind:key="'answer'+i">
+            <br>
             <button id="remove" v-on:click="removeAnswer">
               x
             </button>
@@ -129,12 +130,12 @@ export default {
       }
     },
     addAnswer: function () {
-      if (this.answers.length == 8){
+      if (this.answers.length == 7){
         document.getElementById("answerAdd").innerHTML = "Max number of answers reached";
         document.getElementById("answerAdd").style.background = "#cccccc";
         this.answers.push("");
       }
-      else if (this.answers.length < 9){
+      else if (this.answers.length < 8){
         this.answers.push("");
       }
     },
