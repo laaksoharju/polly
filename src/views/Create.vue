@@ -55,7 +55,7 @@
             <button id="remove" v-on:click="removeAnswer">
               x
             </button>
-            <button v-on:click="addAnswer">
+            <button id="answerAdd" v-on:click="addAnswer">
               Add answer alternative
             </button>
           </div>
@@ -121,10 +121,18 @@ export default {
     removeAnswer: function () {
       if (this.answers.length > 1){
         this.answers.pop();
+        document.getElementById("answerAdd").innerHTML = "Add answer alternative";
+        document.getElementById("answerAdd").style.background = "#03b6ff";
       }
     },
     addAnswer: function () {
-      this.answers.push("");
+      if (this.answers.length < 9){
+        this.answers.push("");
+      }
+      else{
+        document.getElementById("answerAdd").innerHTML = "Max number of answers reached";
+        document.getElementById("answerAdd").style.background = "#cccccc";
+      }
     },
     runQuestion: function () {
       socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
