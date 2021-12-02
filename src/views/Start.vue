@@ -1,18 +1,48 @@
 <template>
-  <div id="nav">
-    <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
-    <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
-    <label>
-      Write poll id: 
-      <input type="text" v-model="id">
-    </label>
-    <router-link v-bind:to="'/poll/'+id" tag="button">{{uiLabels.participatePoll}}</router-link>
-  </div>
+
+  <section id="window">
+    <section id="header">
+      <leftHeader>
+        P-o-l-l-yyyyyyyyyyy!
+      </leftHeader>
+
+      <midHeader>
+        <router-link
+            class="routerLink white"
+            v-bind:to="'/create/'+lang">
+          + {{uiLabels.createPoll_new}}
+        </router-link>
+      </midHeader>
+
+      <rightHeader>
+        <button v-on:click="switchLanguage">
+          {{ uiLabels.changeLanguage }}
+        </button>
+      </rightHeader>
+    </section>
+
+    <div class="inputBox">
+      <input class="singleInput innerInput"
+             type="text"
+             v-model="id"
+             :placeholder="uiLabels.joinPollLink">
+      <router-link
+          class="routerLink"
+          v-bind:to="'/poll/'+id"
+          tag="button">
+        {{uiLabels.participatePoll}}
+      </router-link>
+    </div>
+  </section>
+
 </template>
 
 <script>
 import io from 'socket.io-client';
+import '../assets/css/main.css';
 const socket = io();
+
+document.title = "POLLS HERE, CREATE YOUR POLL HERE"
 
 export default {
   name: 'Start',
@@ -41,10 +71,7 @@ export default {
 </script>
 
 <style>
-  body{
-    /*Adjusts the default font size to the window's width.
-    //Always define font size as a function of "em" anbd not of "px"*/
-    font-size: 2vw;
-  }
+  /*
+    see file '../assets/css/main.css';
+  */
 </style>
-

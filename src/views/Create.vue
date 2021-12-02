@@ -1,37 +1,89 @@
 <template>
-  <div>
-    Poll link: 
-    <input type="text" v-model="pollId">
-    <button v-on:click="createPoll">
-      Create poll
-    </button>
-    <div>
-      {{uiLabels.question}}:
-      <input type="text" v-model="question">
-      <div>
-        Answers:
-        <input v-for="(_, i) in answers" 
-               v-model="answers[i]" 
-               v-bind:key="'answer'+i">
-        <button v-on:click="addAnswer">
-          Add answer alternative
+
+  <section id="window">
+
+    <section id="header">
+      <leftHeader>
+        P-o-l-l-yyyyyyyyyyy!
+      </leftHeader>
+
+      <midHeader>
+        <div class="inputBox">
+          <input class="innerInput"
+                 type="text"
+                 v-model="pollId"
+                 :placeholder="uiLabels.setPollLink">
+          <button v-on:click="createPoll">
+            {{ uiLabels.createPoll_save }}
+          </button>
+        </div>
+      </midHeader>
+
+      <rightHeader>
+        <button v-on:click="switchLanguage">
+          {{ uiLabels.changeLanguage }}
         </button>
-      </div>
-    </div>
-    <button v-on:click="addQuestion">
-      Add question
-    </button>
-    <input type="number" v-model="questionNumber">
-    <button v-on:click="runQuestion">
-      Run question
-    </button>
-    {{data}}
-    <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
-  </div>
+      </rightHeader>
+
+    </section>
+
+    <section id="page">
+
+      <nav>
+        Question
+        <br />
+        Number
+        <br />
+        <input class="singleInput"
+               type="number"
+               v-model="questionNumber">
+        <button v-on:click="addQuestion">
+          Add question
+        </button>
+      </nav>
+
+      <main>
+        <div>
+          {{uiLabels.question}}:
+          <input class="singleInput" type="text" v-model="question">
+          <div>
+            Answers:
+            <input class="singleInput"
+                   v-for="(_, i) in answers"
+                   v-model="answers[i]"
+                   v-bind:key="'answer'+i">
+            <button id="remove" v-on:click="removeAnswer">
+              x
+            </button>
+            <button id="answerAdd" v-on:click="addAnswer">
+              Add answer alternative
+            </button>
+          </div>
+        </div>
+
+        <button v-on:click="runQuestion">
+          Run question
+        </button>
+      </main>
+
+      <option>
+        {{data}}
+        <router-link
+            class="routerLink"
+            v-bind:to="'/result/'+pollId">
+          Check result
+        </router-link>
+      </option>
+
+    </section>
+
+  </section>
+
 </template>
 
 <script>
 import io from 'socket.io-client';
+import '../assets/css/main.css';
 const socket = io();
 
 export default {
@@ -66,8 +118,22 @@ export default {
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )
     },
+    removeAnswer: function () {
+      if (this.answers.length > 1){
+        this.answers.pop();
+        document.getElementById("answerAdd").innerHTML = "Add answer alternative";
+        document.getElementById("answerAdd").style.background = "#03b6ff";
+      }
+    },
     addAnswer: function () {
-      this.answers.push("");
+      if (this.answers.length == 8){
+        document.getElementById("answerAdd").innerHTML = "Max number of answers reached";
+        document.getElementById("answerAdd").style.background = "#cccccc";
+        this.answers.push("");
+      }
+      else if (this.answers.length < 9){
+        this.answers.push("");
+      }
     },
     runQuestion: function () {
       socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
@@ -75,3 +141,10 @@ export default {
   }
 }
 </script>
+
+
+<style>
+  /*
+    see file '../assets/css/main.css';
+  */
+</style>
