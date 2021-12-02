@@ -41,13 +41,16 @@
           Add question
         </button>
       </nav>
-
+      <br>
       <main>
         <div>
           {{uiLabels.question}}:
-          <input class="singleInput" type="text" v-model="question">
+          <input id="questionInput" class="singleInput" type="text" v-model="question">
           <div>
+          <div class="infoText">
             Answers:
+          </div>
+            <br>
             <input class="singleInput"
                    v-for="(_, i) in answers"
                    v-model="answers[i]"
