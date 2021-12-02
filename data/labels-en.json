@@ -9,5 +9,8 @@
 	"sales-pitch": "Simply. Great. Polling.",
 	"setPollLink": "Set your own poll link",
 	"answersSv": "Answers:",
-	"numberSv": "Number"
+	"numberSv": "Number",
+	"addQ": "Add question",
+	"addAalternative": "Add answer alternative",
+	"runQ": "Run question"
 }

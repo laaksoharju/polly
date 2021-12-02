@@ -9,5 +9,8 @@
 	"sales-pitch": "Svar. Helt. Enkelt.",
 	"setPollLink": "Skapa en pollylänk",
 	"answersSv": "Svar:",
-	"numberSv": "Nummer"
+	"numberSv": "Nummer",
+	"addQ": "Lägg till fråga",
+	"addAalternative": "Lägg till svarsalternativ",
+	"runQ": "Kör fråga"
 }

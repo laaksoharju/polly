@@ -38,7 +38,7 @@
                type="number"
                v-model="questionNumber">
         <button v-on:click="addQuestion">
-          Add question
+          {{ uiLabels.addQ }}
         </button>
       </nav>
 
@@ -47,7 +47,7 @@
           {{uiLabels.question}}:
           <input class="singleInput" type="text" v-model="question">
           <div>
-           + {{ uiLabels.answersSv }}
+            {{ uiLabels.answersSv }}
             <input class="singleInput"
                    v-for="(_, i) in answers"
                    v-model="answers[i]"
@@ -56,13 +56,13 @@
               x
             </button>
             <button id="answerAdd" v-on:click="addAnswer">
-              Add answer alternative
+              {{ uiLabels.addAalternative }}
             </button>
           </div>
         </div>
 
         <button v-on:click="runQuestion">
-          Run question
+          {{ uiLabels.runQ }}
         </button>
       </main>
 
