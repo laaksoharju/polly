@@ -19,17 +19,13 @@
           {{ uiLabels.changeLanguage }}
         </button>
       </rightHeader>
-
     </section>
 
-    <div id="nav">
-
-      <label>
-        <input class="singleInput"
-               type="text"
-               v-model="id"
-               :placeholder="uiLabels.joinPollLink">
-      </label>
+    <div class="inputBox">
+      <input class="singleInput innerInput"
+             type="text"
+             v-model="id"
+             :placeholder="uiLabels.joinPollLink">
       <router-link
           class="routerLink"
           v-bind:to="'/poll/'+id"

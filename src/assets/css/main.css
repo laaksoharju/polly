@@ -122,10 +122,11 @@ button:hover{
 }
 
 .routerLink {
+    background: white;
     border: solid #c2c2c2 2px;
     border-radius: 10px;
     padding: 0.55em 1.5em !important;
-    margin: auto;
+    margin: 0.2em;
     text-decoration: none;
     font-weight: bold;
     color: #a1a1a1 !important;
@@ -138,6 +139,7 @@ button:hover{
 }
 
 .routerLink.white {
+    background: none;
     border: solid #f1f1f1 3px;
     color: #ffffff !important;
 }
@@ -165,7 +167,9 @@ button:hover{
     background-color: #f2f2f2;
     border: none;
     margin: auto;
-    width: 450px;
+    width: 50vw;
+    min-width: 350px;
+    max-width: 550px;
     height: 50px;
     border-radius: 12px;
 }
