@@ -52,18 +52,16 @@
             {{ uiLabels.answersSv }}
           </div>
             <br>
-            <!--Adds the answer inputs-->
-            <input id = "answerInput" class="singleInput"
-                   v-for="(_, i) in answers"
-                   v-model="answers[i]"
-                   v-bind:key="'answer'+i">
-            <!--Adds the checkmark boxes-->
-            <button class="check"
-                  v-for="(_, i) in answers"
-                  v-bind:key="'answer'+i"
+            <div v-for="(_, i) in answers" v-bind:key="'answer'+i">
+              <!--Adds the checkmark boxes-->
+              <button class="check"
                   v-on:click="changeCorrect(i)">
               ☐
-            </button>
+              </button>
+              <!--Adds the answer inputs-->
+              <input id = "answerInput" class="singleInput"
+                   v-model="answers[i]">
+            </div>
             <br>
             <button id="remove" v-on:click="removeAnswer">
               x
@@ -161,15 +159,15 @@ export default {
       }
     },
     addAnswer: function () {
-      //if we have reached the maximum number of questions (8), we immediately show this
-      if (this.answers.length == 7){
+      //if we have reached the maximum number of questions (6), we immediately show this
+      if (this.answers.length == 5){
         document.getElementById("answerAdd").innerHTML = "Max number of answers reached";
         document.getElementById("answerAdd").style.background = "#cccccc";
         this.answers.push("");
         this.isCorrect.push(false);
       }
-      //cannot have more than 8 questions
-      else if (this.answers.length < 8){
+      //cannot have more than 6 questions
+      else if (this.answers.length < 6){
         this.answers.push("");
         this.isCorrect.push(false);
       }
