@@ -106,7 +106,7 @@ button {
     font-weight: bold;
 }
 
-button:hover{
+button:not(.check):hover{
     background-color: #02acf6;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
     border-radius: 10px;
@@ -120,6 +120,11 @@ button:hover{
 
 #remove:hover{
     background-color: #C40000;
+}
+
+.check{
+    background-color: #cccccc;
+    padding: 0.55em 1em;
 }
 
 .routerLink {
@@ -192,7 +197,9 @@ button:hover{
   display: flex;
   margin: 1em 0 1em -0.3em;
 }
+
 #answerInput{
+  width: 80%;
 }
 
 .infoText{
