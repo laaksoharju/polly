@@ -56,6 +56,12 @@
                    v-for="(_, i) in answers"
                    v-model="answers[i]"
                    v-bind:key="'answer'+i">
+            <button id="check"
+                  v-for="(_, i) in answers"
+                  v-bind:key="'answer'+i"
+                  v-on:click="changeCorrect(i)">
+              ☐
+            </button>
             <br>
             <button id="remove" v-on:click="removeAnswer">
               x
@@ -99,6 +105,7 @@ export default {
       pollId: "",
       question: "",
       answers: ["", ""],
+      isCorrect: [false, false],
       questionNumber: 0,
       data: {},
       uiLabels: {}
@@ -123,9 +130,47 @@ export default {
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )
     },
+    changeCorrect: function(i){
+      var stringId = "check" + i;
+      console.log(stringId);
+      var mainCheck = document.getElementById("check");
+      var zeroCheck = document.getElementById("check0");
+      var oneCheck = document.getElementById("check1");
+      if (mainCheck){
+        document.getElementById("check").setAttribute("id", stringId);
+      }
+      else if (zeroCheck){
+        document.getElementById("check0").setAttribute("id", stringId);
+      }
+      else if (oneCheck){
+        document.getElementById("check1").setAttribute("id", stringId);
+      }
+      else{
+        console.log("maincheck null");
+      }
+      if (this.isCorrect[i] == true){
+        console.log("changing " + i + " to false");
+        this.isCorrect[i] = false;
+        document.getElementById(stringId).innerHTML = "☐";
+        document.getElementById(stringId).style.background = "#cccccc";
+        console.log("whereerrortrue");
+      }
+      else if(this.isCorrect[i] == false){
+        console.log("changing " + i + " to true");
+        this.isCorrect[i] = true;
+        document.getElementById(stringId).innerHTML = "✓";
+        document.getElementById(stringId).style.background = "#33cc33";
+        console.log("whereerrorfalse");
+
+      }
+      else{
+        console.log("isCorrect typenotseterror")
+      }
+    },
     removeAnswer: function () {
       if (this.answers.length > 1){
         this.answers.pop();
+        this.isCorrect.pop();
         document.getElementById("answerAdd").innerHTML = "Add answer alternative";
         document.getElementById("answerAdd").style.background = "#03b6ff";
       }
@@ -135,9 +180,11 @@ export default {
         document.getElementById("answerAdd").innerHTML = "Max number of answers reached";
         document.getElementById("answerAdd").style.background = "#cccccc";
         this.answers.push("");
+        this.isCorrect.push(false);
       }
       else if (this.answers.length < 8){
         this.answers.push("");
+        this.isCorrect.push(false);
       }
     },
     runQuestion: function () {

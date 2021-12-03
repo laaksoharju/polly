@@ -122,6 +122,19 @@ button:hover{
     background-color: #C40000;
 }
 
+#check{
+    background-color: #cccccc;
+    padding: 0.55em 1em;
+}
+#check0{
+    background-color: #cccccc;
+    padding: 0.55em 1em;
+}
+#check1{
+    background-color: #cccccc;
+    padding: 0.55em 1em;
+}
+
 .routerLink {
     background: white;
     border: solid #c2c2c2 2px;
