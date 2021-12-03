@@ -152,7 +152,7 @@ export default {
     },
     //This function does not change the state of the checkboxes, but updates the graphic(for example a question has been removed) if called
     reloadCorrect: function(i){
-      //the code below adds unique id:s for each checkmark button
+      //the code below adds unique id:s for each checkmark button, for this redraw function it is only kept as a fallback as it should have been declared in the changeCorrect function
       var stringId = "check" + i;
       var checkElements = document.getElementsByClassName("check");
       if (checkElements[i].id !== null){
