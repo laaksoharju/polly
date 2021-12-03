@@ -61,11 +61,12 @@
               <!--Adds the answer inputs-->
               <input id = "answerInput" class="singleInput"
                    v-model="answers[i]">
+              <!--Adds the remove answer button-->
+              <button id="remove" v-on:click="removeAnswer(i)">
+                x
+              </button>
             </div>
             <br>
-            <button id="remove" v-on:click="removeAnswer">
-              x
-            </button>
             <button id="answerAdd" v-on:click="addAnswer">
               {{ uiLabels.addAalternative }}
             </button>
@@ -149,10 +150,32 @@ export default {
         document.getElementById(stringId).style.background = "#33cc33";
       }
     },
-    removeAnswer: function () {
+    //This function does not change the state of the checkboxes, but updates the graphic(for example a question has been removed) if called
+    reloadCorrect: function(i){
+      //the code below adds unique id:s for each checkmark button
+      var stringId = "check" + i;
+      var checkElements = document.getElementsByClassName("check");
+      if (checkElements[i].id !== null){
+        checkElements[i].setAttribute("id", stringId);
+      }
+      //the if-elseif below redraws the state of the checkmark button
+      if (this.isCorrect[i] == true){
+        document.getElementById(stringId).innerHTML = "✓";
+        document.getElementById(stringId).style.background = "#33cc33";         
+      }
+      else if(this.isCorrect[i] == false){
+        document.getElementById(stringId).innerHTML = "☐";
+        document.getElementById(stringId).style.background = "#cccccc";
+      }
+    },
+    removeAnswer: function (i) {
       if (this.answers.length > 1){
-        this.answers.pop();
-        this.isCorrect.pop();
+        this.answers = this.answers.slice(0, i).concat(this.answers.slice(i + 1, this.answers.length));
+        this.isCorrect = this.isCorrect.slice(0, i).concat(this.isCorrect.slice(i + 1, this.isCorrect.length));
+        for (var k = 0; k < this.isCorrect.length + 1; k++){
+          this.reloadCorrect(k);
+        }
+        console.log(this.isCorrect);
         //adds back original text if it has been replaced by the max number of questions reached-notice
         document.getElementById("answerAdd").innerHTML = "Add answer alternative";
         document.getElementById("answerAdd").style.background = "#03b6ff";
