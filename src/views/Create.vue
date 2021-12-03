@@ -52,11 +52,13 @@
             {{ uiLabels.answersSv }}
           </div>
             <br>
+            <!--Adds the answer inputs-->
             <input id = "answerInput" class="singleInput"
                    v-for="(_, i) in answers"
                    v-model="answers[i]"
                    v-bind:key="'answer'+i">
-            <button id="check"
+            <!--Adds the checkmark boxes-->
+            <button class="check"
                   v-for="(_, i) in answers"
                   v-bind:key="'answer'+i"
                   v-on:click="changeCorrect(i)">
@@ -131,57 +133,42 @@ export default {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )
     },
     changeCorrect: function(i){
+      //the code below adds unique id:s for each checkmark button
       var stringId = "check" + i;
-      console.log(stringId);
-      var mainCheck = document.getElementById("check");
-      var zeroCheck = document.getElementById("check0");
-      var oneCheck = document.getElementById("check1");
-      if (mainCheck){
-        document.getElementById("check").setAttribute("id", stringId);
+      var checkElements = document.getElementsByClassName("check");
+      if (checkElements[i].id !== null){
+        checkElements[i].setAttribute("id", stringId);
       }
-      else if (zeroCheck){
-        document.getElementById("check0").setAttribute("id", stringId);
-      }
-      else if (oneCheck){
-        document.getElementById("check1").setAttribute("id", stringId);
-      }
-      else{
-        console.log("maincheck null");
-      }
+      //the if-elseif below changes the state of the checkmark button
       if (this.isCorrect[i] == true){
-        console.log("changing " + i + " to false");
         this.isCorrect[i] = false;
         document.getElementById(stringId).innerHTML = "☐";
         document.getElementById(stringId).style.background = "#cccccc";
-        console.log("whereerrortrue");
       }
       else if(this.isCorrect[i] == false){
-        console.log("changing " + i + " to true");
         this.isCorrect[i] = true;
         document.getElementById(stringId).innerHTML = "✓";
         document.getElementById(stringId).style.background = "#33cc33";
-        console.log("whereerrorfalse");
-
-      }
-      else{
-        console.log("isCorrect typenotseterror")
       }
     },
     removeAnswer: function () {
       if (this.answers.length > 1){
         this.answers.pop();
         this.isCorrect.pop();
+        //adds back original text if it has been replaced by the max number of questions reached-notice
         document.getElementById("answerAdd").innerHTML = "Add answer alternative";
         document.getElementById("answerAdd").style.background = "#03b6ff";
       }
     },
     addAnswer: function () {
+      //if we have reached the maximum number of questions (8), we immediately show this
       if (this.answers.length == 7){
         document.getElementById("answerAdd").innerHTML = "Max number of answers reached";
         document.getElementById("answerAdd").style.background = "#cccccc";
         this.answers.push("");
         this.isCorrect.push(false);
       }
+      //cannot have more than 8 questions
       else if (this.answers.length < 8){
         this.answers.push("");
         this.isCorrect.push(false);
