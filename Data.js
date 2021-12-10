@@ -21,10 +21,10 @@ Data.prototype.getUILabels = function (lang = "en") {
 Data.prototype.createPoll = function(pollId, lang="en") {
   if (typeof this.polls[pollId] === "undefined") {
     let poll = {};
-    poll.lang = lang;  
+    poll.lang = lang;
     poll.questions = [];
     poll.answers = [];
-    poll.currentQuestion = 0;              
+    poll.currentQuestion = 0;
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
   }
@@ -79,7 +79,12 @@ Data.prototype.getAnswers = function(pollId) {
   }
   return {}
 }
+
+Data.prototype.getPoll = function(pollId) {
+  const poll = this.polls[pollId];
+  if (typeof poll !== 'undefined') {
+    return poll;
+  }
+  return {};
+}
 module.exports = Data;
-
-
-

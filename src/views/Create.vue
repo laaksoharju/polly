@@ -121,6 +121,11 @@ export default {
     socket.on("dataUpdate", (data) =>
       this.data = data
     )
+    socket.on("questionAdded", (poll) => {
+      //hantera hel poll
+      console.log(poll);
+      this.cleanWindow();
+    })
     socket.on("pollCreated", (data) =>
       this.data = data)
   },
@@ -129,7 +134,7 @@ export default {
       socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
     },
     addQuestion: function () {
-      socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )
+      socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers, isCorrect: this.isCorrect } )
     },
     changeCorrect: function(i){
       //the code below adds unique id:s for each checkmark button
@@ -161,7 +166,7 @@ export default {
       //the if-elseif below redraws the state of the checkmark button
       if (this.isCorrect[i] == true){
         document.getElementById(stringId).innerHTML = "✓";
-        document.getElementById(stringId).style.background = "#33cc33";         
+        document.getElementById(stringId).style.background = "#33cc33";
       }
       else if(this.isCorrect[i] == false){
         document.getElementById(stringId).innerHTML = "☐";
@@ -196,7 +201,19 @@ export default {
       }
     },
     runQuestion: function () {
-      socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
+      socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber});
+    },
+    cleanWindow: function (){
+      //CODE TO CLEAN WINDOW
+      console.log("cleaning");
+      this.lang = "";
+      this.pollId = "";
+      this.question = "";
+      this.answers = ["", ""];
+      this.isCorrect = [false, false];
+      this.questionNumber += 1;
+      this.data = {};
+      this.uiLabels = {};
     },
     //copied from Start.vue:
     switchLanguage: function() {
