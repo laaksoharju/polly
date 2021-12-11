@@ -134,7 +134,7 @@ export default {
       socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
     },
     addQuestion: function () {
-      socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers, isCorrect: this.isCorrect } )
+      socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers, isCorrect: this.isCorrect, questionNumber: this.questionNumber } )
     },
     changeCorrect: function(i){
       //the code below adds unique id:s for each checkmark button
@@ -204,16 +204,15 @@ export default {
       socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber});
     },
     cleanWindow: function (){
-      //CODE TO CLEAN WINDOW
-      console.log("cleaning");
-      this.lang = "";
+      //Cleans the window for inputtiung questions and answers, thus preparing for another entry
+      //this.lang = "";
       this.pollId = "";
       this.question = "";
       this.answers = ["", ""];
       this.isCorrect = [false, false];
       this.questionNumber += 1;
       this.data = {};
-      this.uiLabels = {};
+      //this.uiLabels = {};
     },
     //copied from Start.vue:
     switchLanguage: function() {
