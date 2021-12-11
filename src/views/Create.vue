@@ -122,7 +122,7 @@ export default {
       this.data = data
     )
     socket.on("questionAdded", (poll) => {
-      //hantera hel poll
+      //logs the poll, for debugging
       console.log(poll);
       this.cleanWindow();
     })
