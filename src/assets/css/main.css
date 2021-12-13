@@ -201,8 +201,6 @@ button:hover{
     font-size: clamp(14px, calc(0.875rem + ((1vw - 5.76px) * 0.641)), 18px);
 }
 
-<<<<<<< Updated upstream
-=======
 #questionInput{
   width: 100%;
   display: flex;
@@ -232,7 +230,7 @@ button:hover{
 
 .answersRight {
     text-align: left;
-    align-items: first;
+    /*align-items: first;*/
     padding: 0.8em;
     margin: 1em;
 }
@@ -241,5 +239,3 @@ button:hover{
     width: 20vw;
 }
 
->>>>>>> Stashed changes
-/*Main section config*/
