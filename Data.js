@@ -41,6 +41,7 @@ Data.prototype.addQuestion = function(pollId, q) {
 
 Data.prototype.getQuestion = function(pollId, qId=null) {
   const poll = this.polls[pollId];
+  console.log(poll);
   console.log("question requested for ", pollId, qId);
   if (typeof poll !== 'undefined') {
     if (qId !== null) {

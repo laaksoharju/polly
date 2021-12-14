@@ -205,14 +205,11 @@ export default {
     },
     cleanWindow: function (){
       //Cleans the window for inputtiung questions and answers, thus preparing for another entry
-      //this.lang = "";
-      this.pollId = "";
       this.question = "";
       this.answers = ["", ""];
       this.isCorrect = [false, false];
       this.questionNumber += 1;
-      this.data = {};
-      //this.uiLabels = {};
+      //this.data = {};
     },
     //copied from Start.vue:
     switchLanguage: function() {

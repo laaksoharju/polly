@@ -37,7 +37,28 @@ function sockets(io, socket, data) {
   socket.on('resetAll', () => {
     data = new Data();
     data.initializeData();
-  })
+  });
+
+  let i = 0;
+  //TODO: Check if it is last question in poll
+  socket.on('getNextQ', function(d) {
+    try{
+      i += 1;
+      socket.emit('newQuestion', data.getQuestion(d.pollId, i));
+    }
+    catch(err){
+      console.log("Next question error");
+    }
+  });
+
+  socket.on('getPrevQ', function(d) {
+    console.log("attempting prevving");
+    if(i>0){
+      i -= 1;
+      socket.emit('newQuestion', data.getQuestion(d.pollId, i));
+      console.log("prevved");
+    }
+  });
 
 }
 
