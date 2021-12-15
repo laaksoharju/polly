@@ -12,5 +12,7 @@
 	"numberSv": "Nummer",
 	"addQ": "Lägg till fråga",
 	"addAalternative": "Lägg till svarsalternativ",
-	"runQ": "Kör fråga"
+	"runQ": "Kör fråga",
+	"previousQ": "Föregående fråga",
+	"nextQ": "Nästa fråga"
 }
