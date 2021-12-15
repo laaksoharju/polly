@@ -39,16 +39,26 @@ function sockets(io, socket, data) {
     data.initializeData();
   });
 
+  //For seeing which question in poll we're checking in Poll view
   let i = 0;
   //TODO: Check if it is last question in poll
   socket.on('getNextQ', function(d) {
-    try{
-      i += 1;
-      socket.emit('newQuestion', data.getQuestion(d.pollId, i));
+    var thisPoll = data.getPoll(d.pollId);
+    var thisPollLength = thisPoll.questions.length;
+    if (eval(i) + eval(1) < thisPollLength){
+      try{
+        i += 1;
+        socket.emit('newQuestion', data.getQuestion(d.pollId, i));
+      }
+      catch(err){
+        console.log("Next question error");
+      }
     }
-    catch(err){
-      console.log("Next question error");
+    else{
+      //LINK TO RESULTS page (button perhaps, change text of "next question?")
+      console.log("Here we show redirecting to results");
     }
+
   });
 
   socket.on('getPrevQ', function(d) {
@@ -59,7 +69,6 @@ function sockets(io, socket, data) {
       console.log("prevved");
     }
   });
-
 }
 
 module.exports = sockets;

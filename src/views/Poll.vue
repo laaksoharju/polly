@@ -34,6 +34,8 @@
           <Question v-bind:question="question"
                     v-on:answer="submitAnswer"/>
         </div>
+
+
       </div>
 
     </main>
@@ -89,7 +91,7 @@ export default {
   },
   methods: {
     submitAnswer: function (answer) {
-      socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
+      socket.emit("submitAnswer", {pollId: this.pollId, answer: answer});
     },
     switchLanguage: function() {
       if (this.lang === "en")
@@ -100,11 +102,9 @@ export default {
     },
     nextQuestion: function(){
       socket.emit("getNextQ", {pollId: this.pollId});
-      console.log("nextQ");
     },
     prevQuestion: function(){
       socket.emit("getPrevQ", {pollId: this.pollId});
-      console.log("prevQ");
     }
   }
 }

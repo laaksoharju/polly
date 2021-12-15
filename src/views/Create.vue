@@ -210,6 +210,9 @@ export default {
       this.isCorrect = [false, false];
       this.questionNumber += 1;
       //this.data = {};
+      for (var k = 0; k < this.isCorrect.length + 1; k++){
+        this.reloadCorrect(k);
+      }
     },
     //copied from Start.vue:
     switchLanguage: function() {
