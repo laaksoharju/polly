@@ -43,13 +43,13 @@
     <div id="pollBottom">
 
       <button v-on:click="prevQuestion" class="answerButton">
-        Previous question
+        {{uiLabels.previousQ}}
       </button>
       <div>
         This is where the chatfunction goes
       </div>
       <button v-on:click="nextQuestion" class="answerButton">
-        Next question
+        {{uiLabels.nextQ}}
       </button>
 
     </div>

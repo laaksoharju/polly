@@ -12,5 +12,7 @@
 	"numberSv": "Number",
 	"addQ": "Add question",
 	"addAalternative": "Add answer alternative",
-	"runQ": "Run question"
+	"runQ": "Run question",
+	"previousQ": "Previous question",
+	"nextQ": "Next question"
 }

@@ -1,4 +1,60 @@
 <template>
+  <section id="window">
+    <section id="header">
+      <leftHeader>
+        P-o-l-l-yyyyyyyyyyy!
+      </leftHeader>
+
+      <midHeader>
+        Midheadertext
+      </midHeader>
+
+      <rightHeader>
+        <button v-on:click="switchLanguage">
+          {{ uiLabels.changeLanguage }}
+        </button>
+      </rightHeader>
+    </section>
+    <section id="page">
+
+      <nav>
+        {{ uiLabels.question }}
+        <br />
+        {{ uiLabels.numberSv }}
+        <br />
+
+      </nav>
+      <br>
+      <main>
+        <div>
+          Poll id:
+          <br>
+          <div>
+            {{pollId}}
+            <button v-on:click="showResults" class="answerButton">
+              Show results
+            </button>
+          </div>
+        </div>
+
+      </main>
+
+      <div id="pollBottom">
+
+        <button v-on:click="prevQuestion" class="answerButton">
+          {{uiLabels.previousQ}}
+        </button>
+        <div>
+          Maybe show some comments here
+        </div>
+        <button v-on:click="nextQuestion" class="answerButton">
+          {{uiLabels.nextQ}}
+        </button>
+
+      </div>
+
+    </section>
+  </section>
   <div>
     {{question}}
   </div>
@@ -20,7 +76,8 @@ export default {
     return {
       question: "",
       data: {
-      }
+      },
+      uiLabels: {}
     }
   },
   created: function () {
@@ -34,6 +91,25 @@ export default {
       this.question = update.q;
       this.data = {};
     })
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    })
+  },
+  methods: {
+    switchLanguage: function () {
+      if (this.lang === "en")
+        this.lang = "sv"
+      else
+        this.lang = "en"
+      socket.emit("switchLanguage", this.lang)
+    },
+    showResults: function() {
+      socket.emit("showResults", {pollId: this.pollId});
+      socket.on("sendPoll", function(d) {
+        console.log(d.answers);
+      })
+
+    }
   }
 }
 </script>

@@ -69,6 +69,11 @@ function sockets(io, socket, data) {
       console.log("prevved");
     }
   });
+
+
+  socket.on('showResults', function(d) {
+    socket.emit('sendPoll', data.getPoll(d))
+  });
 }
 
 module.exports = sockets;

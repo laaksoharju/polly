@@ -237,6 +237,7 @@ button:not(.check):hover{
 
 .answersRight {
     text-align: left;
+
     padding: 0.8em;
     margin: 1em;
 }
@@ -245,5 +246,5 @@ button:not(.check):hover{
     width: 20vw;
 }
 
-
 /*Main section config*/
+
