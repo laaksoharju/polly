@@ -1,6 +1,6 @@
 function sockets(io, socket, data) {
   socket.emit('init', data.getUILabels());
-  
+
   socket.on('pageLoaded', function (lang) {
     socket.emit('init', data.getUILabels(lang));
   });
@@ -14,8 +14,8 @@ function sockets(io, socket, data) {
   });
 
   socket.on('addQuestion', function(d) {
-    data.addQuestion(d.pollId, {q: d.q, a: d.a});
-    socket.emit('dataUpdate', data.getAnswers(d.pollId));
+    data.addQuestion(d.pollId, {q: d.q, a: d.a, isCorrect: d.isCorrect, questionNumber: d.questionNumber});
+    socket.emit('questionAdded', data.getPoll(d.pollId));
   });
 
   socket.on('joinPoll', function(pollId) {
@@ -37,8 +37,29 @@ function sockets(io, socket, data) {
   socket.on('resetAll', () => {
     data = new Data();
     data.initializeData();
-  })
- 
+  });
+
+  let i = 0;
+  //TODO: Check if it is last question in poll
+  socket.on('getNextQ', function(d) {
+    try{
+      i += 1;
+      socket.emit('newQuestion', data.getQuestion(d.pollId, i));
+    }
+    catch(err){
+      console.log("Next question error");
+    }
+  });
+
+  socket.on('getPrevQ', function(d) {
+    console.log("attempting prevving");
+    if(i>0){
+      i -= 1;
+      socket.emit('newQuestion', data.getQuestion(d.pollId, i));
+      console.log("prevved");
+    }
+  });
+
 }
 
 module.exports = sockets;

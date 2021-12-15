@@ -15,11 +15,6 @@
       </button>
     </rightHeader>
   </section>
-  <div>
-    {{pollId}}
-    <Question v-bind:question="question"
-              v-on:answer="submitAnswer"/>
-  </div>
   <section id="page">
 
     <nav>
@@ -32,43 +27,26 @@
     <br>
     <main>
       <div>
-        {{uiLabels.question}}:
+        Poll id:
         <br>
-        This is a placeholder for the questions that will be
         <div>
-          {{ uiLabels.answersSv }}
-          <div id="pollAnswers">
-            <div class="answersLeft" >
-              <button v-on:click="addQuestion">
-                Placeholder answer
-              </button>
-            </div>
-            <div class="answersRight">
-              <button v-on:click="addQuestion">
-                 Placeholder answer
-              </button>
-            </div>
-
-          </div>
-          <br>
-
-          <br>
-
+          {{pollId}}
+          <Question v-bind:question="question"
+                    v-on:answer="submitAnswer"/>
         </div>
       </div>
-
 
     </main>
 
     <div id="pollBottom">
 
-      <button v-on:click="addQuestion" class="answerButton">
+      <button v-on:click="prevQuestion" class="answerButton">
         Previous question
       </button>
       <div>
         This is where the chatfunction goes
       </div>
-      <button v-on:click="addQuestion" class="answerButton">
+      <button v-on:click="nextQuestion" class="answerButton">
         Next question
       </button>
 
@@ -119,6 +97,14 @@ export default {
       else
         this.lang = "en"
       socket.emit("switchLanguage", this.lang)
+    },
+    nextQuestion: function(){
+      socket.emit("getNextQ", {pollId: this.pollId});
+      console.log("nextQ");
+    },
+    prevQuestion: function(){
+      socket.emit("getPrevQ", {pollId: this.pollId});
+      console.log("prevQ");
     }
   }
 }
