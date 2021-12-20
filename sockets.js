@@ -41,11 +41,10 @@ function sockets(io, socket, data) {
 
   //For seeing which question in poll we're checking in Poll view
   let i = 0;
-  //TODO: Check if it is last question in poll
   socket.on('getNextQ', function(d) {
     var thisPoll = data.getPoll(d.pollId);
     var thisPollLength = thisPoll.questions.length;
-    if (eval(i) + eval(1) < thisPollLength){
+    if (eval(i) + eval(1) < eval(thisPollLength)){
       try{
         i += 1;
         socket.emit('newQuestion', data.getQuestion(d.pollId, i));
@@ -55,8 +54,8 @@ function sockets(io, socket, data) {
       }
     }
     else{
-      //LINK TO RESULTS page (button perhaps, change text of "next question?")
-      console.log("Here we show redirecting to results");
+      socket.emit("redirectResults");
+
     }
 
   });

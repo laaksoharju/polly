@@ -48,7 +48,7 @@
       <div>
         This is where the chatfunction goes
       </div>
-      <button v-on:click="nextQuestion" class="answerButton">
+      <button v-on:click="nextQuestion" class="answerButton" id="nextQuestionButton">
         {{uiLabels.nextQ}}
       </button>
 
@@ -88,6 +88,17 @@ export default {
     socket.on("init", (labels) => {
       this.uiLabels = labels
     })
+    socket.on("redirectResults", () => {
+      //When all questons have been answered, changes the "next question"-button to a "view results"-button redirecting to results page
+      var url = "../#/result/" + this.pollId;
+      var redirectUrl = 'location.href = "' + url + '";';
+      document.getElementById("nextQuestionButton").innerHTML = 'View Results';
+      document.getElementById("nextQuestionButton").onclick = function(){
+        location.href = url;
+      }
+      console.log(url);
+      console.log(redirectUrl);
+    })
   },
   methods: {
     submitAnswer: function (answer) {
@@ -105,6 +116,9 @@ export default {
     },
     prevQuestion: function(){
       socket.emit("getPrevQ", {pollId: this.pollId});
+      //Resets "next question" button if it has previously been changed to say "View Results"
+      document.getElementById("nextQuestionButton").innerHTML = 'Next Question';
+      document.getElementById("nextQuestionButton").onclick = 'nextQuestion';
     }
   }
 }
