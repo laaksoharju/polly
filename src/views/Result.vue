@@ -106,7 +106,17 @@ export default {
     showResults: function() {
       socket.emit("showResults", {pollId: this.pollId});
       socket.on("sendPoll", function(d) {
-        console.log(d.answers);
+        let ans = d.answers;
+        let q = d.questions;
+        let i = 0;
+        q.forEach(element => {
+          //Instead of logging to console we should display these
+          console.log(element.q);
+          console.log(element.a);
+          console.log(ans[i]);
+          console.log(element.isCorrect);
+          i++;
+        });
       })
 
     }
