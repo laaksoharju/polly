@@ -34,6 +34,10 @@
             <button v-on:click="showResults" class="answerButton">
               Show results
             </button>
+            <div>
+              {{question}}
+            </div>
+            <Bars v-bind:data="data"/>
           </div>
         </div>
 
@@ -55,10 +59,6 @@
 
     </section>
   </section>
-  <div>
-    {{question}}
-  </div>
-  <Bars v-bind:data="data"/>
 </template>
 
 <script>
