@@ -27,7 +27,7 @@
 
     </section>
 
-    <section id="page">
+    <section id="pageC">
 
       <nav>
         {{ uiLabels.question }}
@@ -131,7 +131,9 @@ export default {
   },
   methods: {
     createPoll: function () {
+      document.getElementById("pageC").style.display = "grid";
       socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
+
     },
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers, isCorrect: this.isCorrect, questionNumber: this.questionNumber } )
@@ -231,4 +233,45 @@ export default {
   /*
     see file '../assets/css/main.css';
   */
+
+  #pageC {
+      display: none;
+      width: 90%;
+      max-width: 1350px;
+      height: 80%;
+      margin: auto;
+      grid-template: "nav    main"
+                   "nav  option";
+      grid-template-rows: 1fr auto;
+      grid-template-columns: 1fr 7fr;
+      grid-row-gap: 5px;
+      grid-column-gap: 5px;
+  }
+
+  #pageC > nav {
+      grid-area: nav;
+      background-color: #fffffe;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 10px 20px rgba(0, 0, 0, 0.12);
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      padding: 20px 20px 20px 30px;
+  }
+
+  #pageC > main {
+      grid-area: main;
+      background-color: #fffffe;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 10px 20px rgba(0, 0, 0, 0.12);
+      border-top-right-radius: 20px;
+      padding: 20px 30px 20px 20px;
+  }
+
+  #pageC > option {
+      grid-area: option;
+      background-color: #fffffe;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 10px 20px rgba(0, 0, 0, 0.12);
+      border-bottom-right-radius: 20px;
+      padding: 20px 30px 20px 20px;
+      text-align: center;
+  }
+
 </style>
