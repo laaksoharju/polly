@@ -37,13 +37,14 @@
         <input class="singleInput"
                type="number"
                v-model="questionNumber">
-        <button v-on:click="addQuestion(); createPoll();">
+        <button
+            v-on:click="if(question){addQuestion();}">
           {{ uiLabels.addQ }}
         </button>
-        <br /><br /><br />
-        Question Data:
-        <br /><br />
-        {{data}}
+<!--        <br /><br /><br />-->
+<!--        Question Data:-->
+<!--        <br /><br />-->
+<!--        {{data}}-->
       </nav>
       <br>
       <main>
@@ -79,22 +80,33 @@
 
       </main>
 
-      <option>
-        <button v-on:click="runQuestion(); isHidden = false;">
-          {{ uiLabels.runQ }}
-        </button>
-        <router-link
+      <option id="pollBottom">
+
+        <div>
+          <router-link
             class="routerLink"
             v-bind:to="'/poll/'+pollId"
             v-if="!isHidden">
           Go to poll page
-        </router-link>
-        <router-link
-            class="routerLink"
-            v-bind:to="'/result/'+pollId"
-            v-if="!isHidden">
-          Check result
-        </router-link>
+          </router-link>
+        </div>
+
+        <button
+            v-on:click="
+              if(question){addQuestion();};
+              runQuestion();
+              isHidden = !pollId.length;">
+          {{ uiLabels.runQ }}
+        </button>
+
+        <div>
+          <router-link
+              class="routerLink"
+              v-bind:to="'/result/'+pollId"
+              v-if="!isHidden">
+            Check result
+          </router-link>
+        </div>
       </option>
 
     </section>
