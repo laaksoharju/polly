@@ -4,7 +4,7 @@
 
     <section id="header">
       <leftHeader>
-        P-o-l-l-yyyyyyyyyyy!
+        <h4>P-o-l-l-yyyyyyyyyyy!</h4>
       </leftHeader>
 
       <midHeader>
@@ -33,13 +33,17 @@
         {{ uiLabels.question }}
         <br />
         {{ uiLabels.numberSv }}
-        <br />
+        <br /><br />
         <input class="singleInput"
                type="number"
                v-model="questionNumber">
-        <button v-on:click="addQuestion">
+        <button v-on:click="addQuestion(); createPoll();">
           {{ uiLabels.addQ }}
         </button>
+        <br /><br /><br />
+        Question Data:
+        <br /><br />
+        {{data}}
       </nav>
       <br>
       <main>
@@ -73,16 +77,22 @@
           </div>
         </div>
 
-        <button v-on:click="runQuestion">
-          {{ uiLabels.runQ }}
-        </button>
       </main>
 
       <option>
-        {{data}}
+        <button v-on:click="runQuestion(); isHidden = false;">
+          {{ uiLabels.runQ }}
+        </button>
         <router-link
             class="routerLink"
-            v-bind:to="'/result/'+pollId">
+            v-bind:to="'/poll/'+pollId"
+            v-if="!isHidden">
+          Go to poll page
+        </router-link>
+        <router-link
+            class="routerLink"
+            v-bind:to="'/result/'+pollId"
+            v-if="!isHidden">
           Check result
         </router-link>
       </option>
@@ -109,6 +119,7 @@ export default {
       isCorrect: [false, false],
       questionNumber: 0,
       data: {},
+      isHidden: true,
       uiLabels: {}
     }
   },
@@ -133,7 +144,6 @@ export default {
     createPoll: function () {
       document.getElementById("pageC").style.display = "grid";
       socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
-
     },
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers, isCorrect: this.isCorrect, questionNumber: this.questionNumber } )
@@ -235,7 +245,7 @@ export default {
   */
 
   #pageC {
-      display: none;
+      display: grid;
       width: 90%;
       max-width: 1350px;
       height: 80%;

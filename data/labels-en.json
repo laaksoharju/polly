@@ -1,7 +1,7 @@
 {
-	"changeLanguage": "Byt till Svenska",
-	"createPoll_new": "Create your own poll",
-	"createPoll_save": "Start create poll",
+	"changeLanguage": "\uD83C\uDF10 Byt till Svenska",
+	"createPoll_new": "➕ Create your own poll",
+	"createPoll_save": "Save my poll link",
 	"invite": "Invite participants with this link:",
 	"joinPollLink": "Write poll link to join",
 	"participatePoll": "Participate in poll",
@@ -10,9 +10,11 @@
 	"setPollLink": "Set your own poll link",
 	"answersSv": "Answers:",
 	"numberSv": "Number",
-	"addQ": "Add question",
-	"addAalternative": "Add answer alternative",
-	"runQ": "Run question",
+	"addQ": "Save and add",
+	"addAalternative": "Add another answer",
+	"runQ": "Run Poll",
 	"previousQ": "Previous question",
-	"nextQ": "Next question"
+	"nextQ": "Next question",
+	"addComment": "✔ ️Send",
+	"writeComment": "Write your comment here"
 }

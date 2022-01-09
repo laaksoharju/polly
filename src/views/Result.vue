@@ -2,11 +2,11 @@
   <section id="window">
     <section id="header">
       <leftHeader>
-        P-o-l-l-yyyyyyyyyyy!
+        <h4>P-o-l-l-yyyyyyyyyyy!</h4>
       </leftHeader>
 
       <midHeader>
-        Midheadertext
+        <h4>Poll id: {{pollId}} </h4>
       </midHeader>
 
       <rightHeader>
@@ -27,23 +27,23 @@
       <br>
       <main>
         <div>
-          Poll id:
-          <br>
-          <div>
-            {{pollId}}
-            <button v-on:click="showResults" class="answerButton">
-              Show results
-            </button>
+<!--          Poll id:-->
+<!--          <br>-->
+<!--          <div>-->
+<!--            {{pollId}}-->
+<!--            <button v-on:click="showResults" class="answerButton">-->
+<!--              Show results-->
+<!--            </button>-->
+<!--          </div>-->
             <div>
-              {{question}}
+              {{ resultP }}
             </div>
-            <Bars v-bind:data="data"/>
-          </div>
+          <Bars v-bind:data="data"/>
         </div>
 
       </main>
 
-      <div id="pollBottom">
+      <option id="pollBottom">
 
         <button v-on:click="prevQuestion" class="answerButton">
           {{uiLabels.previousQ}}
@@ -55,7 +55,7 @@
           {{uiLabels.nextQ}}
         </button>
 
-      </div>
+      </option>
 
     </section>
   </section>
@@ -65,6 +65,7 @@
 // @ is an alias to /src
 import Bars from '@/components/Bars.vue';
 import io from 'socket.io-client';
+import '../assets/css/main.css';
 const socket = io();
 
 export default {
@@ -77,6 +78,7 @@ export default {
       question: "",
       data: {
       },
+      resultP: "result",
       uiLabels: {}
     }
   },
@@ -109,17 +111,25 @@ export default {
         let ans = d.answers;
         let q = d.questions;
         let i = 0;
+        let self = this;
         q.forEach(element => {
           //Instead of logging to console we should display these
           console.log(element.q);
           console.log(element.a);
           console.log(ans[i]);
           console.log(element.isCorrect);
+          self.resultP = self.resultP + ", " + element.q;
           i++;
         });
+        console.log(self.resultP);
       })
-
+    },
+    showComments: function() {
+      socket.emit("showComments", {comments: this.comments, questionNumber: this.questionNumber })
     }
+  },
+  mounted: function(){
+    this.$nextTick(this.showResults);
   }
 }
 </script>

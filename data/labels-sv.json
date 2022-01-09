@@ -1,6 +1,6 @@
 {
-	"changeLanguage": "Change to English",
-	"createPoll_new": "Skapa din egen polly",
+	"changeLanguage": "\uD83C\uDF10 Change to English",
+	"createPoll_new": "➕ Skapa din egen polly",
 	"createPoll_save": "Börja skapa polly",
 	"invite": "Bjud in deltagare med den här länken:",
 	"joinPollLink": "Ange pollylänk för att ansluta",
@@ -14,5 +14,7 @@
 	"addAalternative": "Lägg till svarsalternativ",
 	"runQ": "Kör fråga",
 	"previousQ": "Föregående fråga",
-	"nextQ": "Nästa fråga"
+	"nextQ": "Nästa fråga",
+	"addComment": "✔ ️Send (sv)",
+	"writeComment": "Write your comment here (sv)"
 }

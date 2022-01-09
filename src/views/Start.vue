@@ -3,14 +3,21 @@
   <section id="window">
     <section id="header">
       <leftHeader>
-        P-o-l-l-yyyyyyyyyyy!
+        <h4>P-o-l-l-yyyyyyyyyyy!</h4>
+        <!--
+        <router-link
+            class="routerLink"
+            v-bind:to="'/'">
+          P-o-l-l-yyyyyyyyyyy!
+        </router-link>
+        -->
       </leftHeader>
 
       <midHeader>
         <router-link
             class="routerLink white"
             v-bind:to="'/create/'+lang">
-          + {{uiLabels.createPoll_new}}
+          {{uiLabels.createPoll_new}}
         </router-link>
       </midHeader>
 
@@ -42,7 +49,7 @@ import io from 'socket.io-client';
 import '../assets/css/main.css';
 const socket = io();
 
-document.title = "POLLS HERE, CREATE YOUR POLL HERE"
+document.title = "P-o-l-l-y"
 
 export default {
   name: 'Start',

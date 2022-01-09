@@ -2,11 +2,11 @@
   <section id="window">
   <section id="header">
     <leftHeader>
-      P-o-l-l-yyyyyyyyyyy!
+      <h4>P-o-l-l-yyyyyyyyyyy!</h4>
     </leftHeader>
 
     <midHeader>
-      Midheadertext
+      <h4>Poll id: {{pollId}} </h4>
     </midHeader>
 
     <rightHeader>
@@ -27,10 +27,10 @@
     <br>
     <main>
       <div>
-        Poll id:
-        <br>
+<!--        Poll id:-->
+<!--        <br>-->
+<!--        {{pollId}}-->
         <div>
-          {{pollId}}
           <Question v-bind:question="question"
                     v-on:answer="submitAnswer"/>
         </div>
@@ -40,19 +40,29 @@
 
     </main>
 
-    <div id="pollBottom">
+    <option id="pollBottom">
 
       <button v-on:click="prevQuestion" class="answerButton">
         {{uiLabels.previousQ}}
       </button>
       <div>
-        This is where the chatfunction goes
+<!--        comment function still being worked on-->
+        comment here
+<!--        <div class="inputBox">-->
+<!--          <input class="innerInput"-->
+<!--                 type="text"-->
+<!--                 v-model="comments"-->
+<!--                 :placeholder="uiLabels.writeComment">-->
+<!--          <button v-on:click="addComment">-->
+<!--            {{ uiLabels.addComment }}-->
+<!--          </button>-->
+<!--        </div>-->
       </div>
       <button v-on:click="nextQuestion" class="answerButton" id="nextQuestionButton">
         {{uiLabels.nextQ}}
       </button>
 
-    </div>
+    </option>
 
   </section>
   </section>
@@ -62,6 +72,7 @@
 // @ is an alias to /src
 import Question from '@/components/Question.vue';
 import io from 'socket.io-client';
+import '../assets/css/main.css';
 const socket = io();
 
 export default {
@@ -76,6 +87,7 @@ export default {
         a: []
       },
       pollId: "inactive poll",
+      comments: [""],
       uiLabels: {}
     }
   },
@@ -119,7 +131,10 @@ export default {
       //Resets "next question" button if it has previously been changed to say "View Results"
       document.getElementById("nextQuestionButton").innerHTML = 'Next Question';
       document.getElementById("nextQuestionButton").onclick = 'nextQuestion';
-    }
+    },
+    addComment: function () {
+      socket.emit("addComment", {comments: this.comments, questionNumber: this.questionNumber } )
+    },
   }
 }
 </script>
