@@ -8,10 +8,13 @@
       {{key}}
     </div>
   </div>
+  <br/><br/><br/>
+  {{data}}
 </div>
 </template>
 
 <script>
+
 export default {
   name: 'Bars',
   props: {

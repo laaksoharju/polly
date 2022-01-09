@@ -92,7 +92,6 @@
 
         <button
             v-on:click="
-              addQuestion();
               runQuestion();
               isHidden = false;">
           {{ uiLabels.runQ }}
@@ -128,7 +127,7 @@ export default {
       question: "",
       answers: ["", ""],
       isCorrect: [false, false],
-      questionNumber: 0,
+      questionNumber: 1,
       data: {},
       isHidden: true,
       uiLabels: {}
@@ -153,7 +152,8 @@ export default {
   },
   methods: {
     createPoll: function () {
-      document.getElementById("pageC").style.display = "grid";
+      document.getElementById("pageC").style.visibility = "visible";
+      document.getElementById("pageC").style.opacity = 1;
       socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
     },
     addQuestion: function () {
@@ -256,7 +256,10 @@ export default {
   */
 
   #pageC {
-      display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.75s linear;
+      display: grid;
       width: 90%;
       max-width: 1350px;
       height: 80%;

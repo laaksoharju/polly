@@ -35,10 +35,14 @@
 <!--              Show results-->
 <!--            </button>-->
 <!--          </div>-->
-            <div>
-              {{ resultP }}
-            </div>
+
+          Question:
+          <question v-bind:question="question"/>
+           {{ question }}
+          <br/><br/>
+          Results:
           <Bars v-bind:data="data"/>
+
         </div>
 
       </main>
@@ -64,6 +68,7 @@
 <script>
 // @ is an alias to /src
 import Bars from '@/components/Bars.vue';
+import Question from '@/components/Question.vue';
 import io from 'socket.io-client';
 import '../assets/css/main.css';
 const socket = io();
@@ -71,6 +76,7 @@ const socket = io();
 export default {
   name: 'Result',
   components: {
+    Question,
     Bars
   },
   data: function () {
@@ -78,7 +84,7 @@ export default {
       question: "",
       data: {
       },
-      resultP: "result",
+      resultQ: "",
       uiLabels: {}
     }
   },
@@ -111,17 +117,14 @@ export default {
         let ans = d.answers;
         let q = d.questions;
         let i = 0;
-        let self = this;
         q.forEach(element => {
           //Instead of logging to console we should display these
           console.log(element.q);
           console.log(element.a);
           console.log(ans[i]);
           console.log(element.isCorrect);
-          self.resultP = self.resultP + ", " + element.q;
           i++;
         });
-        console.log(self.resultP);
       })
     },
     showComments: function() {
