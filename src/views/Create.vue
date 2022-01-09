@@ -79,22 +79,30 @@
 
       </main>
 
-      <option>
-        <button v-on:click="runQuestion(); isHidden = false;">
-          {{ uiLabels.runQ }}
-        </button>
-        <router-link
+      <option id="pollBottom">
+
+        <div>
+          <router-link
             class="routerLink"
             v-bind:to="'/poll/'+pollId"
             v-if="!isHidden">
           Go to poll page
-        </router-link>
-        <router-link
-            class="routerLink"
-            v-bind:to="'/result/'+pollId"
-            v-if="!isHidden">
-          Check result
-        </router-link>
+          </router-link>
+        </div>
+
+        <button
+            v-on:click="runQuestion(); isHidden = !pollId.length;">
+          {{ uiLabels.runQ }}
+        </button>
+
+        <div>
+          <router-link
+              class="routerLink"
+              v-bind:to="'/result/'+pollId"
+              v-if="!isHidden">
+            Check result
+          </router-link>
+        </div>
       </option>
 
     </section>
@@ -207,7 +215,7 @@ export default {
         this.isCorrect.push(false);
       }
       //cannot have more than 6 questions
-      else if (this.answers.length < 6){
+      else if (this.answers.length < 6 && this.question !== ""){
         this.answers.push("");
         this.isCorrect.push(false);
       }
