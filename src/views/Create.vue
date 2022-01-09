@@ -37,13 +37,14 @@
         <input class="singleInput"
                type="number"
                v-model="questionNumber">
-        <button v-on:click="addQuestion(); createPoll();">
+        <button
+            v-on:click="if(question && answers[0] && answers[1]){addQuestion();}">
           {{ uiLabels.addQ }}
         </button>
-        <br /><br /><br />
-        Question Data:
-        <br /><br />
-        {{data}}
+<!--        <br /><br /><br />-->
+<!--        Question Data:-->
+<!--        <br /><br />-->
+<!--        {{data}}-->
       </nav>
       <br>
       <main>
@@ -215,7 +216,7 @@ export default {
         this.isCorrect.push(false);
       }
       //cannot have more than 6 questions
-      else if (this.answers.length < 6 && this.question !== ""){
+      else if (this.answers.length < 6){
         this.answers.push("");
         this.isCorrect.push(false);
       }
