@@ -37,8 +37,7 @@
         <input class="singleInput"
                type="number"
                v-model="questionNumber">
-        <button
-            v-on:click="if(question){addQuestion();}">
+        <button v-on:click="addQuestion">
           {{ uiLabels.addQ }}
         </button>
 <!--        <br /><br /><br />-->
@@ -93,9 +92,9 @@
 
         <button
             v-on:click="
-              if(question){addQuestion();};
+              addQuestion();
               runQuestion();
-              isHidden = !pollId.length;">
+              isHidden = false;">
           {{ uiLabels.runQ }}
         </button>
 
@@ -257,7 +256,7 @@ export default {
   */
 
   #pageC {
-      display: grid;
+      display: none;
       width: 90%;
       max-width: 1350px;
       height: 80%;
