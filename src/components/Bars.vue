@@ -29,6 +29,8 @@
 </template>
 
 <script>
+//import io from 'socket.io-client';
+//const socket = io();
 
 export default {
   name: 'Bars',
@@ -36,8 +38,6 @@ export default {
     data: Object
   }
 }
-
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -45,7 +45,7 @@ export default {
 
 
 
-.bar {
+/*.bar {
   display: flex;
   height: 3em;
   alignment: left;
@@ -57,32 +57,32 @@ export default {
   color: white;
 }
 
-.bar:nth-child(1) div:nth-child(1) {
+.bar:nth-child(1) div:nth-child(1), #barNo0 {
   background-color: #1A237E;
   border-radius: 0 0.5em 0.5em 0;
   margin-left: 1em;
 }
-.bar:nth-child(2) div:nth-child(1) {
+.bar:nth-child(2) div:nth-child(1), #barNo1 {
   background-color: #1565C0;
   border-radius: 0 0.5em 0.5em 0;
   margin-left: 1em;
 }
-.bar:nth-child(3) div:nth-child(1) {
+.bar:nth-child(3) div:nth-child(1), #barNo02 {
   background-color: #0288D1;
   border-radius: 0 0.5em 0.5em 0;
   margin-left: 1em;
 }
-.bar:nth-child(4) div:nth-child(1) {
+.bar:nth-child(4) div:nth-child(1), #barNo3 {
   background-color: #00ACC1;
   border-radius: 0 0.5em 0.5em 0;
   margin-left: 1em;
 }
-.bar:nth-child(5) div:nth-child(1) {
+.bar:nth-child(5) div:nth-child(1), #barNo4 {
   background-color: #009688;
   border-radius: 0 0.5em 0.5em 0;
   margin-left: 1em;
 }
-.bar:nth-child(6) div:nth-child(1) {
+.bar:nth-child(6) div:nth-child(1), #barNo5 {
   background-color: #66BB6A;
   border-radius: 0 0.5em 0.5em 0;
   margin-left: 1em;
@@ -110,6 +110,6 @@ export default {
   padding: 20px 40px 20px 60px;
   border: solid 3px #03b6ff;
   border-radius: 30px;
-}
+}*/
 
 </style>
