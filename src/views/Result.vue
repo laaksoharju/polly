@@ -6,7 +6,7 @@
       </leftHeader>
 
       <midHeader>
-        <h4>Poll id: {{pollId}} </h4>
+        <h4>Result of poll {{pollId}} </h4>
       </midHeader>
 
       <rightHeader>
@@ -18,16 +18,16 @@
     <section id="page">
 
       <nav>
-        {{ uiLabels.question }}
-        <br />
-        {{ uiLabels.numberSv }}
-        <br />
+        <div>Question:</div>
+
+        <br/>
+        <div>{{ question }}</div>
 
       </nav>
       <br>
       <main>
         <div>
-<!--          Poll id:-->
+
 <!--          <br>-->
 <!--          <div>-->
 <!--            {{pollId}}-->
@@ -36,11 +36,6 @@
 <!--            </button>-->
 <!--          </div>-->
 
-          Question:
-          <question v-bind:question="question"/>
-           {{ question }}
-          <br/><br/>
-          Results:
           <Bars v-bind:data="data"/>
 
         </div>
@@ -53,7 +48,7 @@
           {{uiLabels.previousQ}}
         </button>
         <div>
-          Maybe show some comments here
+<!--          Maybe show some comments here-->
         </div>
         <button v-on:click="nextQuestion" class="answerButton">
           {{uiLabels.nextQ}}
@@ -68,7 +63,6 @@
 <script>
 // @ is an alias to /src
 import Bars from '@/components/Bars.vue';
-import Question from '@/components/Question.vue';
 import io from 'socket.io-client';
 import '../assets/css/main.css';
 const socket = io();
@@ -76,7 +70,6 @@ const socket = io();
 export default {
   name: 'Result',
   components: {
-    Question,
     Bars
   },
   data: function () {

@@ -6,7 +6,7 @@
     </leftHeader>
 
     <midHeader>
-      <h4>Poll id: {{pollId}} </h4>
+      <h4>Answering poll {{pollId}} </h4>
     </midHeader>
 
     <rightHeader>
@@ -47,7 +47,7 @@
       </button>
       <div>
 <!--        comment function still being worked on-->
-        comment here
+<!--        comment here-->
 <!--        <div class="inputBox">-->
 <!--          <input class="innerInput"-->
 <!--                 type="text"-->

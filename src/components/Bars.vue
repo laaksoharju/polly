@@ -1,15 +1,30 @@
 <template>
-<div class="wrapper">
-  <div class="bar" v-for="(item, key) in data" v-bind:key="key">
-    <div v-bind:style="{height: item + 'px'}">
-      <span> {{item}} </span>
+<div class="wrapper" id="resultBar">
+  <left>
+    <h2>Results:</h2>
+    <br/>
+    <div v-for="(item, key) in data" v-bind:key="key">
+      <span>
+        <h4>Answer "{{key}}":</h4>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        {{item}} vote(s)
+        <br/><br/>
+      </span>
     </div>
-    <div> 
+  </left>
+
+  <right>
+    <div class="bar" v-for="(item, key) in data" v-bind:key="key">
       {{key}}
+      <div v-bind:style="{width: item + 'em'}">
+        <div> <br/> </div>
+        <span class="answerBar"> {{item}} </span>
+      </div>
     </div>
-  </div>
-  <br/><br/><br/>
-  {{data}}
+
+  </right>
+
+
 </div>
 </template>
 
@@ -21,6 +36,8 @@ export default {
     data: Object
   }
 }
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -29,32 +46,70 @@ export default {
 
 
 .bar {
-  display: inline-block;
-  width: 50px;
-  vertical-align: bottom;
+  display: flex;
+  height: 3em;
+  alignment: left;
+  margin: 1em 0 1em 0;
 }
 
-.bar span {
+.bar .answerBar {
   position: relative;
-  top: -1.2em;
+  color: white;
 }
+
 .bar:nth-child(1) div:nth-child(1) {
-  background-color:red;
+  background-color: #1A237E;
+  border-radius: 0 0.5em 0.5em 0;
+  margin-left: 1em;
 }
 .bar:nth-child(2) div:nth-child(1) {
-  background-color:blue;
+  background-color: #1565C0;
+  border-radius: 0 0.5em 0.5em 0;
+  margin-left: 1em;
 }
 .bar:nth-child(3) div:nth-child(1) {
-  background-color:teal;
+  background-color: #0288D1;
+  border-radius: 0 0.5em 0.5em 0;
+  margin-left: 1em;
 }
 .bar:nth-child(4) div:nth-child(1) {
-  background-color:purple;
+  background-color: #00ACC1;
+  border-radius: 0 0.5em 0.5em 0;
+  margin-left: 1em;
 }
 .bar:nth-child(5) div:nth-child(1) {
-  background-color:yellow;
+  background-color: #009688;
+  border-radius: 0 0.5em 0.5em 0;
+  margin-left: 1em;
+}
+.bar:nth-child(6) div:nth-child(1) {
+  background-color: #66BB6A;
+  border-radius: 0 0.5em 0.5em 0;
+  margin-left: 1em;
 }
 
-.wrapper {
-  padding:3em;
+#resultBar {
+  display: grid;
+  grid-template: "left right";
+  grid-template-columns: 1fr 3fr;
+  padding: 2em 1em 2em 1em;
+
 }
+
+#resultBar > left {
+  grid-area: left;
+  display: block;
+  margin: auto auto auto 10px;
+}
+
+#resultBar > right {
+  grid-area: right;
+  background-color: #fffffe;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 10px 20px rgba(0, 0, 0, 0.12);
+  margin: auto 20px auto 20px;
+  padding: 20px 40px 20px 60px;
+  border: solid 3px #03b6ff;
+  border-radius: 30px;
+}
+
 </style>
