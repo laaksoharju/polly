@@ -120,6 +120,43 @@ export default {
         });
       })
     },
+    nextQuestion: function(){
+      socket.emit("getNextQ", {pollId: this.pollId});
+      //console.log("clicked next butt");
+      socket.on("sendPoll", function(d) {
+        let ans = d.answers;
+        let q = d.questions;
+        let i = 0;
+        q.forEach(element => {
+          //Instead of logging to console we should display these
+          console.log(element.q);
+          console.log(element.a);
+          console.log(ans[i]);
+          console.log(element.isCorrect);
+          i++;
+        });
+      })
+    },
+    prevQuestion: function(){
+      socket.emit("getPrevQ", {pollId: this.pollId});
+      //Resets "next question" button if it has previously been changed to say "View Results"
+      //document.getElementById("nextQuestionButton").innerHTML = 'Next Question';
+      //document.getElementById("nextQuestionButton").onclick = 'nextQuestion';
+      //console.log("clicked prev butt");
+      socket.on("sendPoll", function(d) {
+        let ans = d.answers;
+        let q = d.questions;
+        let i = 0;
+        q.forEach(element => {
+          //Instead of logging to console we should display these
+          console.log(element.q);
+          console.log(element.a);
+          console.log(ans[i]);
+          console.log(element.isCorrect);
+          i++;
+        });
+      })
+    },
     showComments: function() {
       socket.emit("showComments", {comments: this.comments, questionNumber: this.questionNumber })
     }
