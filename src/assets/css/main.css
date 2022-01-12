@@ -246,5 +246,9 @@ button:not(.check):hover{
     width: 20vw;
 }
 
+.clickedDiv {
+    background-color:white;
+
+}
 /*Main section config*/
 

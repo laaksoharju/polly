@@ -18,7 +18,7 @@
     <section id="page">
 
       <nav>
-        <div>Question:</div>
+        <div>Question: </div>
 
         <br/>
         <div>{{ question }}</div>

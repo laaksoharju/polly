@@ -30,9 +30,13 @@
 <!--        Poll id:-->
 <!--        <br>-->
 <!--        {{pollId}}-->
-        <div>
+        <div class="questionDiv" v-if="!isClicked">
           <Question v-bind:question="question"
                     v-on:answer="submitAnswer"/>
+        </div>
+        <div class ="clickedDiv" v-if = "isClicked">
+          Your answer has been submitted!
+
         </div>
 
 
@@ -88,8 +92,8 @@ export default {
       },
       pollId: "inactive poll",
       comments: [""],
-      uiLabels: {}
-    }
+      uiLabels: {},
+     isClicked:false}
   },
   created: function () {
     this.pollId = this.$route.params.id
@@ -115,6 +119,7 @@ export default {
   methods: {
     submitAnswer: function (answer) {
       socket.emit("submitAnswer", {pollId: this.pollId, answer: answer});
+      this.isClicked = true;
     },
     switchLanguage: function() {
       if (this.lang === "en")
@@ -125,16 +130,21 @@ export default {
     },
     nextQuestion: function(){
       socket.emit("getNextQ", {pollId: this.pollId});
+      this.isClicked = false;
     },
     prevQuestion: function(){
       socket.emit("getPrevQ", {pollId: this.pollId});
       //Resets "next question" button if it has previously been changed to say "View Results"
       document.getElementById("nextQuestionButton").innerHTML = 'Next Question';
       document.getElementById("nextQuestionButton").onclick = 'nextQuestion';
+      this.isClicked = false;
     },
     addComment: function () {
       socket.emit("addComment", {comments: this.comments, questionNumber: this.questionNumber } )
     },
+    clicked: function () {
+      this.isClicked = true;
+    }
   }
 }
 </script>
