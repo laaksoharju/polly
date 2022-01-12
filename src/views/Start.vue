@@ -3,7 +3,7 @@
   <section id="window">
     <section id="header">
       <leftHeader>
-        <h4>P-o-l-l-yyyyyyyyyyy!</h4>
+      <a href="/"><h4>P-o-l-l-yyyyyyyyyyy!</h4></a>
         <!--
         <router-link
             class="routerLink"
