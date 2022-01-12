@@ -16,5 +16,6 @@
 	"previousQ": "Previous question",
 	"nextQ": "Next question",
 	"addComment": "✔ ️Send",
-	"writeComment": "Write your comment here"
+	"writeComment": "Write your comment here",
+	"ansSub": "You have answered the question"
 }

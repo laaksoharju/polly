@@ -35,8 +35,7 @@
                     v-on:answer="submitAnswer"/>
         </div>
         <div class ="clickedDiv" v-if = "isClicked">
-          Your answer has been submitted!
-
+          {{uiLabels.ansSub}}
         </div>
 
 
