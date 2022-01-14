@@ -2,7 +2,7 @@
   <section id="window">
     <section id="header">
       <leftHeader>
-        <h4>P-o-l-l-yyyyyyyyyyy!</h4>
+        <a href="/"><h4>P-o-l-l-yyyyyyyyyyy!</h4></a>
       </leftHeader>
 
       <midHeader>
@@ -18,7 +18,7 @@
     <section id="page">
 
       <nav>
-        <div>Question:</div>
+        <div>Question: </div>
 
         <br/>
         <div>{{ question }}</div>
@@ -111,11 +111,19 @@ export default {
         let q = d.questions;
         let i = 0;
         q.forEach(element => {
-          //Instead of logging to console we should display these
           console.log(element.q);
           console.log(element.a);
           console.log(ans[i]);
           console.log(element.isCorrect);
+
+          for (var k = 0; k < element.isCorrect.length; k++){
+            if ((element.isCorrect[k] == true) ){
+              console.log(k);
+              const correctBar = document.getElementsByClassName('bar')[k];
+              correctBar.style.color = "#33cc33";
+            }
+          }
+
           i++;
         });
       })
