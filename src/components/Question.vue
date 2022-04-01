@@ -4,16 +4,19 @@
   {{ a }}
 </button>
 </template>
+
 <script>
+
 export default {
-  name: 'Bars',
+  name: 'Question',
   props: {
     question: Object
   },
   methods: {
     answer: function (answer) {
       this.$emit("answer", answer);
-    } 
+    }
   }
 }
+
 </script>

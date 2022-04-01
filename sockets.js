@@ -1,6 +1,6 @@
 function sockets(io, socket, data) {
   socket.emit('init', data.getUILabels());
-  
+
   socket.on('pageLoaded', function (lang) {
     socket.emit('init', data.getUILabels(lang));
   });
@@ -14,8 +14,8 @@ function sockets(io, socket, data) {
   });
 
   socket.on('addQuestion', function(d) {
-    data.addQuestion(d.pollId, {q: d.q, a: d.a});
-    socket.emit('dataUpdate', data.getAnswers(d.pollId));
+    data.addQuestion(d.pollId, {q: d.q, a: d.a, isCorrect: d.isCorrect, questionNumber: d.questionNumber});
+    socket.emit('questionAdded', data.getPoll(d.pollId));
   });
 
   socket.on('joinPoll', function(pollId) {
@@ -37,8 +37,42 @@ function sockets(io, socket, data) {
   socket.on('resetAll', () => {
     data = new Data();
     data.initializeData();
-  })
- 
+  });
+
+  //For seeing which question in poll we're checking in Poll view
+  let i = 0;
+  socket.on('getNextQ', function(d) {
+    var thisPoll = data.getPoll(d.pollId);
+    var thisPollLength = thisPoll.questions.length;
+    if (eval(i) + eval(1) < eval(thisPollLength)){
+      try{
+        i += 1;
+        socket.emit('newQuestion', data.getQuestion(d.pollId, i));
+      }
+      catch(err){
+        console.log("Next question error");
+      }
+    }
+    else{
+      socket.emit("redirectResults");
+
+    }
+
+  });
+
+  socket.on('getPrevQ', function(d) {
+    console.log("attempting prevving");
+    if(i>0){
+      i -= 1;
+      socket.emit('newQuestion', data.getQuestion(d.pollId, i));
+      console.log("prevved");
+    }
+  });
+
+
+  socket.on('showResults', function(d) {
+    socket.emit('sendPoll', data.getPoll(d.pollId))
+  });
 }
 
 module.exports = sockets;
