@@ -1,6 +1,5 @@
 <template>
   <div>
-    <ReorderQuestion />
     {{pollId}}
     <QuestionComponent v-bind:question="question"
               v-on:answer="submitAnswer"/>
