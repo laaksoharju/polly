@@ -17,7 +17,6 @@ export default {
   name: 'PollView',
   components: {
     QuestionComponent,
-    ReorderQuestion
   },
   data: function () {
     return {
