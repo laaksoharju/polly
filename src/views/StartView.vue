@@ -1,33 +1,32 @@
 <template>
-  <header>
-    <div v-bind:class="['hamburger', {'close': !hideNav}]" 
-         v-on:click="toggleNav">
-    </div>
-    <div class="logo"><img src="/img/logo.png">Polly polling tool</div>
-  </header>
-  <ResponsiveNav v-bind:hideNav="hideNav">
-    <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
-    <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
-    <a href="">Pricing</a>
-    <a href="">About</a>
-    <a href="">FAQ</a>
-  </ResponsiveNav>f
+<body>
+<link href='https://fonts.googleapis.com/css?family=Monoton' rel='stylesheet'>
+  <div>
+  <h1 id="title">BuddyCount</h1>
+  </div>
+  <div id="Buttons">
+  <button class="standardButton" role="button">
+  <router-link class="noLink" v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
+  </button>
   <label>
     Write poll id: 
     <input type="text" v-model="id">
   </label>
-  <router-link v-bind:to="'/poll/'+id">{{uiLabels.participatePoll}}</router-link>
+  <button class="standardButton" role="button">
+  <router-link class="noLink" v-bind:to="'/poll/'+id">{{uiLabels.participatePoll}}</router-link>
+  </button>
+  </div>
+</body>
 </template>
 
 <script>
-import ResponsiveNav from '@/components/ResponsiveNav.vue';
 import io from 'socket.io-client';
 const socket = io();
 
 export default {
   name: 'StartView',
   components: {
-    ResponsiveNav
+
   },
   data: function () {
     return {
@@ -57,53 +56,51 @@ export default {
 }
 </script>
 <style scoped>
-  header {
-    background-color: gray;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 2em auto;
-  }
-  .logo {
-    text-transform: uppercase;
-    letter-spacing: 0.25em;
-    font-size: 2.5rem;
-    color: white;
-    padding-top:0.2em;
-  }
-  .logo img {
-    height:2.5rem;
-    vertical-align: bottom;
-    margin-right: 0.5rem; 
-  }
-  .hamburger {
-    color:white;
-    width:1em;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding:0.5rem;
-    top:0;
-    left:0;
-    height: 2rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-  }
-
-@media screen and (max-width:50em) {
-  .logo {
-    font-size: 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .hamburger::before {
-    content: "☰";
-  }
-  .close::before {
-    content: "✕";
-  }
-  .hide {
-    left:-12em;
-  }
+#Buttons{
+  display: grid;
+  height: 15em;
+  grid-template-columns: 20em;
+  justify-content: center;
 }
+.noLink {
+  text-decoration: none;
+  color: inherit;
+}
+body {
+  position: fixed;
+  background-color: #24A07B;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0;
+}
+
+#title{
+  font-family: 'Monoton';font-size: 10vw;
+}
+
+.standardButton {
+  background-color: #70C1B3;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+}
+
+
+
+.standardButton:hover {
+  background-color: #67b3a5b7;
+}
+
+
 </style>
