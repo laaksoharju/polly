@@ -22,7 +22,6 @@
   <router-link v-bind:to="'/poll/'+id">
   <button class="standardButton" role="button"><p class="buttonText">Join game </p></button>
   </router-link>
-<p>HEJ!</p>
   </div>
 </body>
 </template>
