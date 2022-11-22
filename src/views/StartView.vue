@@ -1,6 +1,6 @@
 <template>
 <body>
-<link href='https://fonts.googleapis.com/css?family=Monoton' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Monoton' rel='stylesheet' type='text/css'>
 
 <img class="playMuteButton" :src="audioPicture" v-on:click="playSong" />
   <div>
@@ -107,6 +107,8 @@ body {
 #title {
   font-family: "Monoton";
   font-size: 10vw;
+  font-synthesis: none;
+  
 }
 
 .standardButton {
