@@ -23,6 +23,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/PollView.vue')
   },
   {
+    path: '/selectsavedgame',
+    name: 'SelectSavedGame',
+    component: () => import(/* webpackChunkName: "about" */ '../views/SelectSavedGame.vue')
+  },
+  {
     path: '/create/:lang',
     name: 'CreateView',
     // route level code-splitting

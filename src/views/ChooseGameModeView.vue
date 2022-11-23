@@ -4,7 +4,7 @@
     <router-link v-bind:to="'/hostorjoin'"><button>Back</button></router-link>
   </div>
   <div>
-    <button>PLAY SAVED QUIZ</button>
+    <router-link v-bind:to="'/selectsavedgame'"><button>PLAY SAVED QUIZ</button></router-link>
     <button>CREATE COLLABORATIVE QUIZ</button>
   </div>
   </body>
