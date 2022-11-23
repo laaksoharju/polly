@@ -1,5 +1,8 @@
 <template>
   <body>
+  <div style="margin: 2em">
+    <router-link v-bind:to="'/'"><button>Back</button></router-link>
+  </div>
   <header>
     <h2>Create your questions </h2>
   </header>

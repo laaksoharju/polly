@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div style="margin: 2em">
+      <router-link v-bind:to="'/hostorjoin'"><button>Back</button></router-link>
+    </div>
 
     <!-- view text-->
     <div>

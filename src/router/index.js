@@ -39,12 +39,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/ResultView.vue')
   },
   {
-    path: '/ClientJoinGameView',
+    path: '/clientjoingame',
     name: "ClientJoinGameView",
     component: () => import(/* webpackChunkName: "about" */ '../views/ClientJoinGameView.vue')
   },
   {
-    path: '/HostPreGameView',
+    path: '/hostpregame',
     name: "HostPreGameView",
     component: () => import(/* webpackChunkName: "about" */ '../views/HostPreGameView.vue')
   }

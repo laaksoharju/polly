@@ -7,7 +7,7 @@
 
       <router-link v-bind:to="'/gamemode/'"><button>Host</button></router-link>
       <br>
-      <button>Join</button>
+      <router-link v-bind:to="'/clientjoingame/'"><button>Join</button></router-link>
     </div>
   </body>
 </template>
