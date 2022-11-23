@@ -143,7 +143,7 @@ h2  {
   height: 800px;
 }
 hr {
-  heigth: 10px;
+  height: 10px;
 }
 
 
