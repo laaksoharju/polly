@@ -1,7 +1,6 @@
 <template>
   <body>
 
-
     <div>
       <div class="languageButtonDiv">
         <button class="languageButton" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
@@ -9,9 +8,9 @@
       <h1 class="gameName">Stämmer det?</h1>
     </div>
     <div>
-      <router-link v-bind:to="'/poll/'+id"><button class="gameButtons">{{uiLabels.participatePoll}}</button></router-link>
-<br>
-      <router-link v-bind:to="'/create/'+lang"><button class="gameButtons">{{uiLabels.createPoll}}</button></router-link>
+      <router-link v-bind:to="'/hostorjoin/'+id"><button class="gameButtons">Play!</button></router-link>
+        <br>
+      <router-link v-bind:to="'/create/'+lang"><button class="gameButtons">Create Poll</button></router-link>
 
     </div>
 <!--  <header>-->

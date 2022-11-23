@@ -7,6 +7,16 @@ const routes = [
     name: 'Start',
     component: StartView
   },
+  {
+    path: '/hostorjoin',
+    name: 'HostOrJoinView',
+    component: () => import(/* webpackChunkName: "about" */ '../views/HostOrJoinView.vue')
+  },
+  {
+    path: '/gamemode',
+    name: 'ChooseGameModeView',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ChooseGameModeView.vue')
+  },
     {
     path: '/poll/:id',
     name: 'PollView',
