@@ -1,10 +1,10 @@
 <template>
+  <body>
+  <header>
+    <h2>Skapa dina frågekort </h2>
+  </header>
   <div>
-    Poll link: 
-    <input type="text" v-model="pollId">
-    <button v-on:click="createPoll">
-      Create poll
-    </button>
+
     <div>
       {{uiLabels.question}}:
       <input type="text" v-model="question">
@@ -27,7 +27,17 @@
     </button>
     {{data}}
     <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
+
+    <div class = "link">
+    Poll link:
+    <input type="text" v-model="pollId">
+    <button v-on:click="createPoll">
+      Create poll
+    </button>
+    </div>
+
   </div>
+  </body>
 </template>
 
 <script>
@@ -75,3 +85,20 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(253,52,76);
+
+}
+
+.link {
+  width: 15vw;
+  height: 10vw;
+
+}
+
+</style>
