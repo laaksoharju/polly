@@ -2,14 +2,16 @@
   <body>
 
 
-  <button class="languageButton" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
     <div>
-      <h1 class="gameName">Namn</h1>
+      <div class="languageButtonDiv">
+        <button class="languageButton" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+      </div>
+      <h1 class="gameName">Stämmer det?</h1>
     </div>
     <div>
-      <button class="gameButtons">Spela!</button>
+      <router-link v-bind:to="'/poll/'+id"><button class="gameButtons">{{uiLabels.participatePoll}}</button></router-link>
 <br>
-      <button class="gameButtons">Skapa spel</button>
+      <router-link v-bind:to="'/create/'+lang"><button class="gameButtons">{{uiLabels.createPoll}}</button></router-link>
 
     </div>
 <!--  <header>-->
@@ -79,39 +81,67 @@ export default {
   }
 
   body{
-    background-color: #FF6357;
+    background: rgb(253,52,76);
+    background: radial-gradient(circle, rgba(253,52,76,1) 35%, rgba(182,49,65,1) 90%);
     width: 100vw;
     height: 100vh;
     overflow: hidden;
     font-family: "Trebuchet MS",serif;
   }
 
+  h1{
+    color: #00C3BA;
+    -webkit-text-stroke: 3px black;
+  }
+
   .gameName{
-    margin-top: 20vh;
+    margin-top: 15vh;
     font-size: 10vw;
   }
 
   .gameButtons{
-    background-color: #3DFF91;
-    width: 20vw;
-    height: 10vh;
+    font-family: "Trebuchet MS",serif;
+    color: #FEF9CC;
+    background-color: #1F6E77;
+    /*-webkit-text-stroke: 1px black;*/
+    cursor: pointer;
+    width: 12em;
+    height: 2em;
     margin: 20px;
     font-size: 3vw;
     border-radius: 4vw;
-    border-color: #06B250;
+    border-color: #2B211B;
+    border-width: 0.6vw;
     border-style: solid ;
     transition-duration: 0.15s;
 
   }
-  .gameButtons:hover{
-    background-color: #06B250;
+  button:hover{
+    background-color: #00C3BA;
     border-width: 0.3vw;
-    color: #ffffff;
+    color: #FEF9CC;
 
   }
-  .languageButton{
+
+  .languageButtonDiv{
     width: 10vw;
     height: 10vh;
+
+  }
+
+  .languageButton{
+    font-family: "Trebuchet MS", serif;
+    cursor: pointer;
+    width: 10vw;
+    height: 10vh;
+    margin: 2vw;
+    font-size: 1.5em;
+    border-radius: 4vw;
+    border-color: #2B211B;
+    border-width: 0.6vw;
+    border-style: solid ;
+    transition-duration: 0.15s;
+
   }
 
   .logo {
