@@ -7,6 +7,16 @@ const routes = [
     name: 'Start',
     component: StartView
   },
+  {
+    path: '/hostorjoin',
+    name: 'HostOrJoinView',
+    component: () => import(/* webpackChunkName: "about" */ '../views/HostOrJoinView.vue')
+  },
+  {
+    path: '/gamemode',
+    name: 'ChooseGameModeView',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ChooseGameModeView.vue')
+  },
     {
     path: '/poll/:id',
     name: 'PollView',
@@ -27,6 +37,16 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/ResultView.vue')
+  },
+  {
+    path: '/ClientJoinGameView',
+    name: "ClientJoinGameView",
+    component: () => import(/* webpackChunkName: "about" */ '../views/ClientJoinGameView.vue')
+  },
+  {
+    path: '/HostPreGameView',
+    name: "HostPreGameView",
+    component: () => import(/* webpackChunkName: "about" */ '../views/HostPreGameView.vue')
   }
 ]
 
