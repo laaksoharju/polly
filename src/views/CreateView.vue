@@ -30,7 +30,7 @@
 
         </div>
 
-        <button v-on:click="validateForm();addQuestion()">
+        <button v-on:click="addQuestion()">
           Add question
         </button>
 
@@ -60,7 +60,7 @@
              v-bind:key="question">
           <li>
             <button v-on:click="deleteQuestion(index)">X</button>
-            {{"Q: "+question.questionText}}<br>
+            {{"Q: "+question.questionText}}
             {{"A: "+question.questionAnswer}}
           </li>
 
@@ -97,7 +97,6 @@ export default {
     return {
       questionArray: [],
       questionObject: {questionText: "", questionAnswer: undefined},
-      formValidation: false,
 
       lang: "",
       pollId: "",
@@ -125,15 +124,11 @@ export default {
     //   socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
     // },
     addQuestion: function () {
-      if(this.formValidation===true) {
-        const question = Object.assign({}, this.questionObject)
-        this.questionArray.push(question)
-        console.log(this.questionArray)
-        socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers})
-      }
-      else{
-        console.log("validate")
-      }
+      const question = Object.assign({}, this.questionObject)
+      this.questionArray.push(question)
+      console.log(this.questionArray)
+      socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers})
+
     },
     // addAnswer: function () {
     //   this.answers.push("");
@@ -143,14 +138,6 @@ export default {
     // },
     deleteQuestion: function (index) {
       this.questionArray.splice(index, 1)
-    },
-    validateForm: function () {
-      if (this.questionObject.questionAnswer === undefined ||
-          this.questionObject.questionText === "") {
-        return this.formValidation=false;
-      } else {
-        return this.formValidation = true;
-      }
     }
   }
 }
