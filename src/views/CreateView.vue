@@ -128,6 +128,9 @@ export default {
       this.questionArray.push(question)
       console.log(this.questionArray)
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers})
+      this.questionObject.questionText= "";
+      this.questionObject.questionAnswer =  undefined;
+
 
     },
     // addAnswer: function () {
