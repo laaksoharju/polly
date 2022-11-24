@@ -56,11 +56,13 @@
       <div class = "questionListWrapper">
         <h3>Question list</h3>
         <hr>
-        <div class="questionList" v-for="question in questionArray"
+        <div class="questionList" v-for="(question,index) in questionArray"
              v-bind:key="question">
-          <ol>
-            {{question}}
-          </ol>
+          <li>
+            <button v-on:click="deleteQuestion(index)">X</button>
+            {{"Q: "+question.questionText}}
+            {{"A: "+question.questionAnswer}}
+          </li>
 
         </div>
       </div>
@@ -94,7 +96,7 @@ export default {
   data: function () {
     return {
       questionArray: [],
-      questionObject:{questionText: "",questionAnswer: undefined },
+      questionObject: {questionText: "", questionAnswer: undefined},
 
       lang: "",
       pollId: "",
@@ -122,7 +124,10 @@ export default {
     //   socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
     // },
     addQuestion: function () {
-      socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers })
+      const question = Object.assign({}, this.questionObject)
+      this.questionArray.push(question)
+      console.log(this.questionArray)
+      socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers})
 
     },
     // addAnswer: function () {
@@ -130,7 +135,10 @@ export default {
     // },
     // runQuestion: function () {
     //   socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
-    // }
+    // },
+    deleteQuestion: function (index) {
+      this.questionArray.splice(index, 1)
+    }
   }
 }
 </script>
@@ -158,16 +166,16 @@ h2  {
   flex-direction: row;
   width: 90em;
   height: 90vh;
-  border-style: solid;
 }
 
 .questionListWrapper {
   background-color: white;
   order: 0;
   width: 20em;
-  height: 80em;
+  height: 25em;
   margin-left: 2em;
   margin-right: 2em;
+  overflow: auto;
 
 }
 
@@ -177,11 +185,12 @@ h2  {
   order: 1;
   margin-left: 2em;
   margin-right: 2em;
-  border-style: solid;
+
 }
 
 .questionList{
-
+  text-align: left;
+  margin-left: 2em;
 }
 hr {
   height: 10px;
