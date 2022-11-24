@@ -1,5 +1,10 @@
 <template>
-
+<div>
+  <router-link v-bind:to="'/clientjoingame/'"><button>Back</button></router-link>
+  <div>
+  #nickname
+  </div>
+</div>
 </template>
 
 <script>
