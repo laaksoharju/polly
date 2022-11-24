@@ -131,16 +131,17 @@ export default {
         console.log(this.questionArray)
         socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers})
       }
-      else{
-        console.log("validate")
-      }
-    },
+
+      this.questionObject.questionText= "";
+      this.questionObject.questionAnswer =  undefined;
+      },
     // addAnswer: function () {
     //   this.answers.push("");
     // },
     // runQuestion: function () {
     //   socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
     // },
+
     deleteQuestion: function (index) {
       this.questionArray.splice(index, 1)
     },
@@ -148,7 +149,8 @@ export default {
       if (this.questionObject.questionAnswer === undefined ||
           this.questionObject.questionText === "") {
         return this.formValidation=false;
-      } else {
+      }
+      else {
         return this.formValidation = true;
       }
     }
