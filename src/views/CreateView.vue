@@ -14,7 +14,7 @@
                v-model="answers[i]" 
                v-bind:key="'answer'+i">
         <button v-on:click="addAnswer">
-          Add answer alternative
+          Hej jag heter Olivia
         </button>
       </div>
     </div>
