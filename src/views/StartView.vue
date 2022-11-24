@@ -32,6 +32,7 @@
 <!--    <input type="text" v-model="id">-->
 <!--  </label>-->
 <!--  <router-link v-bind:to="'/poll/'+id">{{uiLabels.participatePoll}}</router-link>-->
+
   </body>
 </template>
 
