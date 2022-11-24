@@ -7,4 +7,19 @@
 	"question": "Question",
 	"changeLanguage": "Byt till svenska",
 
+
+
+
+	"CREATEVIEW": "",
+	"createYourQuestions": "Create Your Questions",
+	"question": "Question",
+	"questionList": "Question List",
+	"answer": "Answer",
+	"yes": "Yes",
+	"no": "No",
+	"addYourQuestion": "Add question",
+	"playGame": "Play",
+	"saveGame": "Save",
+	"goBack": "Back"
+
 }

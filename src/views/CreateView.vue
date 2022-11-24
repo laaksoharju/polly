@@ -1,14 +1,14 @@
 <template>
   <body>
-  <h2>Create your questions </h2>
+  <h2>{{ uiLabels.createYourQuestions }} </h2>
   <div>
 
     <div class="pageGrid">
-      <!--      {{uiLabels.question}}:-->
       <div class="questionToolWrapper">
+        {{uiLabels.question}}:
         <input type="text" v-model="questionObject.questionText">
         <div>
-          Answer:
+          {{uiLabels.answer}}:
           <!--        <input v-for="(_, i) in answers"-->
           <!--               v-model="answers[i]"-->
           <!--               v-bind:key="'answer'+i">-->
@@ -18,23 +18,23 @@
 
           <input type="radio" id="Yes"
                  v-model="questionObject.questionAnswer" v-bind:value="true">
-          <label for="html">Yes</label>
+          <label for="html">{{uiLabels.yes}}</label>
 
           <input type="radio" id="Nej"
                  v-model="questionObject.questionAnswer" v-bind:value="false">
-          <label for="html">No</label><br>
+          <label for="html">{{uiLabels.no}}</label><br>
 
 
         </div>
 
         <button v-on:click="validateForm();addQuestion()">
-          Add question
+          {{uiLabels.addYourQuestion}}
         </button>
 
         <div class = "playButton">
           <router-link v-bind:to="'//'">
             <button>
-              Play
+              {{uiLabels.playGame}}
             </button>
           </router-link>
         </div>
@@ -43,7 +43,7 @@
 
           <router-link v-bind:to="'//'">
             <button>
-              Save
+              {{uiLabels.saveGame}}
             </button>
           </router-link>
 
@@ -51,7 +51,7 @@
       </div>
 
       <div class = "questionListWrapper">
-        <h3>Question list</h3>
+        <h3>{{uiLabels.questionList}}</h3>
         <hr>
         <div class="questionList" v-for="(question,index) in questionArray"
              v-bind:key="question">
@@ -83,7 +83,7 @@
   </div>
   <footer>
     <div style="margin: 2em">
-      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">Back</button>
+      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">{{uiLabels.goBack}}</button>
     </div>
   </footer>
   </body>
