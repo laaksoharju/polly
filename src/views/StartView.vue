@@ -7,12 +7,9 @@
  
   <ResponsiveNav v-bind:hideNav="hideNav">
     <button id="language" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
-    <button id="create" v-on:click="switchLanguage">{{uiLabels.createPoll}}</button>
-    <button id="join" v-on:click="switchLanguage">{{uiLabels.participatePoll}}</button>
-   <!-- <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>-->
-   <!-- <a href="">Pricing</a> 
-    <a href="">About</a> 
-    <a href="">FAQ</a> -->
+    <router-link id="create" v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
+    <router-link id="join" v-bind:to="'/join/'+lang">{{uiLabels.participatePoll}}</router-link>
+ 
   </ResponsiveNav> 
 
   <!--<label>
@@ -72,11 +69,14 @@ export default {
   .logo {
     text-transform: uppercase;
     margin: 300px;
-    letter-spacing: 0.25em;
-    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+    font-size: 3rem;
     color: rgb(0, 0, 0);
     padding-top:0.2em;
-  }
+    font-family: "Fjord one";
+    font-weight: bold;
+}
+  
   /*.logo img {
     height:2.5rem;
     vertical-align: bottom;
@@ -104,28 +104,31 @@ export default {
   position: absolute;
   top: -10px;
   right: -10px;
+  font-family: "Fjord one";
 }
 
 #create {
   background-color: rgb(90, 58, 64);
   font-size: 1.5rem;
   color: rgb(255, 255, 255);
-  padding: 20px;
+  padding: 30px;
   margin-top: -200px;
   position: absolute;
   left: 40%;
   transform: translateX(-50%);
+  font-family: "Fjord one";
 }
 
 #join {
   background-color: rgb(90, 58, 64);
   font-size: 1.5rem;
   color: rgb(255, 255, 255);
-  padding: 20px;
+  padding: 30px;
   margin-top: -200px;
   position: absolute;
   left: 60%;
   transform: translateX(-50%);
+  font-family: "Fjord one";
 }
 
 
