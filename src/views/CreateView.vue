@@ -34,7 +34,7 @@
           Add question
         </button>
 
-        <div class = "playbutton">
+        <div class = "playButton">
           <router-link v-bind:to="'//'">
             <button>
               Play
