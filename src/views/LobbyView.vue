@@ -1,5 +1,10 @@
 <template>
-
+<div>
+  <router-link v-bind:to="'/clientjiongame/'"><button>Back</button></router-link>
+  <div>
+  #nickname
+  </div>
+</div>
 </template>
 
 <script>
