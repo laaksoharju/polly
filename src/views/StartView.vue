@@ -1,22 +1,26 @@
 <template>
-  <header>
+  <body>
     <div v-bind:class="['hamburger', {'close': !hideNav}]" 
-         v-on:click="toggleNav">
+         v-on:click="toggleNav"> 
     </div>
-    <div class="logo"><img src="/img/logo.png">Polly polling tool</div>
-  </header>
+    <div class="logo"> WELCOME TO XPLANANDUM</div>
+ 
   <ResponsiveNav v-bind:hideNav="hideNav">
-    <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
-    <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
-    <a href="">Pricing</a>
-    <a href="">About</a>
-    <a href="">FAQ</a>
-  </ResponsiveNav>f
-  <label>
+    <button id="language" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+    <button id="create" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+    <button id="join" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+   <!-- <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>-->
+   <!-- <a href="">Pricing</a> 
+    <a href="">About</a> 
+    <a href="">FAQ</a> -->
+  </ResponsiveNav> 
+
+  <!--<label>
     Write poll id: 
     <input type="text" v-model="id">
   </label>
-  <router-link v-bind:to="'/poll/'+id">{{uiLabels.participatePoll}}</router-link>
+  <router-link v-bind:to="'/poll/'+id">{{uiLabels.participatePoll}}</router-link> -->
+</body>
 </template>
 
 <script>
@@ -57,26 +61,28 @@ export default {
 }
 </script>
 <style scoped>
-  header {
-    background-color: gray;
+  body {
+    background-color: rgb(161, 255, 160);
     width: 100%;
     display: grid;
     grid-template-columns: 2em auto;
+    min-height: 100vh;
   }
+
   .logo {
     text-transform: uppercase;
     letter-spacing: 0.25em;
     font-size: 2.5rem;
-    color: white;
+    color: rgb(0, 0, 0);
     padding-top:0.2em;
   }
-  .logo img {
+  /*.logo img {
     height:2.5rem;
     vertical-align: bottom;
     margin-right: 0.5rem; 
-  }
+  } */
   .hamburger {
-    color:white;
+    color:rgb(138, 246, 155);
     width:1em;
     display: flex;
     align-items: center;
@@ -88,6 +94,39 @@ export default {
     cursor: pointer;
     font-size: 1.5rem;
   }
+
+  #language {
+  background-color: rgb(254, 190, 201);
+  font-size: 1.5rem;
+  color: black;
+  padding: 25px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+#create {
+  background-color: rgb(90, 58, 64);
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+#join {
+  background-color: rgb(90, 58, 64);
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 
 @media screen and (max-width:50em) {
   .logo {
@@ -105,5 +144,6 @@ export default {
   .hide {
     left:-12em;
   }
+
 }
 </style>
