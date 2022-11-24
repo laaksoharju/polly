@@ -52,6 +52,11 @@ const routes = [
     path: '/hostpregame',
     name: "HostPreGameView",
     component: () => import(/* webpackChunkName: "about" */ '../views/HostPreGameView.vue')
+  },
+  {
+    path: '/lobby',
+    name: "LobbyView",
+    component: () => import(/* webpackChunkName: "about" */ '../views/LobbyView.vue')
   }
 ]
 

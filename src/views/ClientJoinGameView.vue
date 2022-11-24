@@ -27,9 +27,7 @@
     </form>
 
     <!-- Button for joining game -->
-    <button>
-      Join game
-    </button>
+    <router-link v-bind:to="'/lobby'"><button>Join Game </button></router-link>
   </div>
 </template>
 
