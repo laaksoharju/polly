@@ -20,4 +20,13 @@ export default {
 
 <style scoped>
 
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: rgb(253,52,76);
+  background: radial-gradient(circle, rgba(253,52,76,1) 35%, rgba(182,49,65,1) 90%);
+
+}
+
 </style>
