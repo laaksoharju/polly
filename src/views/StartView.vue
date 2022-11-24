@@ -7,8 +7,8 @@
  
   <ResponsiveNav v-bind:hideNav="hideNav">
     <button id="language" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
-    <button id="create" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
-    <button id="join" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+    <button id="create" v-on:click="switchLanguage">{{uiLabels.createPoll}}</button>
+    <button id="join" v-on:click="switchLanguage">{{uiLabels.participatePoll}}</button>
    <!-- <router-link v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>-->
    <!-- <a href="">Pricing</a> 
     <a href="">About</a> 
@@ -71,6 +71,7 @@ export default {
 
   .logo {
     text-transform: uppercase;
+    margin: 300px;
     letter-spacing: 0.25em;
     font-size: 2.5rem;
     color: rgb(0, 0, 0);
@@ -110,10 +111,10 @@ export default {
   font-size: 1.5rem;
   color: rgb(255, 255, 255);
   padding: 20px;
-  margin: 0;
+  margin-top: -200px;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  left: 40%;
+  transform: translateX(-50%);
 }
 
 #join {
@@ -121,10 +122,10 @@ export default {
   font-size: 1.5rem;
   color: rgb(255, 255, 255);
   padding: 20px;
-  margin: 0;
+  margin-top: -200px;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  left: 60%;
+  transform: translateX(-50%);
 }
 
 
