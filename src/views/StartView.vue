@@ -90,7 +90,7 @@ export default {
 
   h1{
     color: #00C3BA;
-    -webkit-text-stroke: 3px black;
+    -webkit-text-stroke: 0.3vw black;
   }
 
   .gameName{
@@ -104,8 +104,8 @@ export default {
     background-color: #1F6E77;
     /*-webkit-text-stroke: 1px black;*/
     cursor: pointer;
-    width: 12em;
-    height: 2em;
+    width: 30vw;
+    height: 10vh;
     margin: 20px;
     font-size: 3vw;
     border-radius: 4vw;
