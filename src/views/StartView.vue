@@ -6,12 +6,12 @@
         <button class="languageButton" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
       </div>
 <!--      <h1 class="gameName">{{uiLabels.gameTitle}}</h1>-->
-      <h1 class = "gameName">Stämmer det?</h1>
+      <h1 class = "gameName">{{uiLabels.gameTitle}}</h1>
     </div>
     <div>
-      <router-link v-bind:to="'/hostorjoin/'+id"><button class="gameButtons">Play!</button></router-link>
+      <router-link v-bind:to="'/hostorjoin/'+id"><button class="gameButtons">{{uiLabels.playTheGame}}</button></router-link>
         <br>
-      <router-link v-bind:to="'/create/'+lang"><button class="gameButtons">Create Poll</button></router-link>
+      <router-link v-bind:to="'/create/'+lang"><button class="gameButtons">{{uiLabels.createTheGame}}</button></router-link>
 
     </div>
 <!--  <header>-->

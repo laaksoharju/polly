@@ -3,7 +3,7 @@
 
   <div>
 
-    <router-link v-bind:to="'/gamemode/'"><button>Host</button></router-link>
+    <router-link v-bind:to="'/gamemode/'"><button>{{uiLabels.hostAGame}}</button></router-link>
     <br>
     <router-link v-bind:to="'/clientjoingame/'"><button>Join</button></router-link>
   </div>
@@ -18,8 +18,27 @@
 </template>
 
 <script>
+
+import io from 'socket.io-client';
+const socket = io();
+
 export default {
-  name: "HostOrJoinView"
+  name: "HostOrJoinView",
+
+  data: function () {
+    return {
+      uiLabels: {},
+      lang: "",
+    }
+  },
+  created: function () {
+
+     socket.emit("pageLoaded", this.lang);
+     socket.on("init", (labels) => {
+       this.uiLabels = labels
+
+     })
+  },
 }
 </script>
 

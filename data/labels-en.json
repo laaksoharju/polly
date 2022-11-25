@@ -1,4 +1,8 @@
 {
+
+	"STARTVIEW": "",
+	"playTheGame": "PLAY",
+	"createTheGame": "CREATE",
 	"gameTitle": "True or false?",
 	"sales-pitch": "Simply. Great. Polling.",
 	"invite": "Invite participants with this link:",
@@ -20,6 +24,10 @@
 	"addYourQuestion": "Add question",
 	"playGame": "Play",
 	"saveGame": "Save",
-	"goBack": "Back"
+	"goBack": "Back",
+
+	"HOSTORJOINVIEW": "",
+	"hostAGame": "Host a lobby",
+	"joinAGame": "Join a lobby"
 
 }

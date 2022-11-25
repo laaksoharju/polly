@@ -83,7 +83,7 @@
   </div>
   <footer>
     <div style="margin: 2em">
-      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">{{uiLabels.goBack}}</button>
+      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1); goBack();">{{uiLabels.goBack}}</button>
     </div>
   </footer>
   </body>
@@ -155,6 +155,12 @@ export default {
       else {
         return this.formValidation = true;
       }
+    },
+    goBack: function () {
+      socket.emit("pageLoaded", this.lang);
+      socket.on("init", (labels) => {
+        this.uiLabels = labels
+      })
     }
   }
 }
