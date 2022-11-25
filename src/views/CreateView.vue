@@ -1,17 +1,15 @@
 <template>
   <body>
-  <div style="margin: 2em">
-    <router-link v-bind:to="'/'"><button>Back</button></router-link>
-  </div>
-  <h2>Create your questions </h2>
+  <h2>{{ uiLabels.createYourQuestions }} </h2>
   <div>
 
     <div class="pageGrid">
-      <!--      {{uiLabels.question}}:-->
       <div class="questionToolWrapper">
+        <h3>{{ this.finishedQuiz.name }}</h3>
+        {{uiLabels.question}}:
         <input type="text" v-model="questionObject.questionText">
         <div>
-          Answer:
+          {{uiLabels.answer}}:
           <!--        <input v-for="(_, i) in answers"-->
           <!--               v-model="answers[i]"-->
           <!--               v-bind:key="'answer'+i">-->
@@ -21,23 +19,23 @@
 
           <input type="radio" id="Yes"
                  v-model="questionObject.questionAnswer" v-bind:value="true">
-          <label for="html">Yes</label>
+          <label for="html">{{uiLabels.yes}}</label>
 
           <input type="radio" id="Nej"
                  v-model="questionObject.questionAnswer" v-bind:value="false">
-          <label for="html">No</label><br>
+          <label for="html">{{uiLabels.no}}</label><br>
 
 
         </div>
 
         <button v-on:click="validateForm();addQuestion()">
-          Add question
+          {{uiLabels.addYourQuestion}}
         </button>
 
         <div class = "playButton">
           <router-link v-bind:to="'//'">
             <button>
-              Play
+              {{uiLabels.playGame}}
             </button>
           </router-link>
         </div>
@@ -46,7 +44,7 @@
 
           <router-link v-bind:to="'//'">
             <button>
-              Save
+              {{uiLabels.saveGame}}
             </button>
           </router-link>
 
@@ -54,9 +52,9 @@
       </div>
 
       <div class = "questionListWrapper">
-        <h3>Question list</h3>
+        <h3>{{uiLabels.questionList}}</h3>
         <hr>
-        <div class="questionList" v-for="(question,index) in questionArray"
+        <div class="questionList" v-for="(question,index) in finishedQuiz.listOfQuestions"
              v-bind:key="question">
           <li>
             <button v-on:click="deleteQuestion(index)">X</button>
@@ -84,6 +82,11 @@
     <!--    </div>-->
 
   </div>
+  <footer>
+    <div style="margin: 2em">
+      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">{{uiLabels.goBack}}</button>
+    </div>
+  </footer>
   </body>
 </template>
 
@@ -95,7 +98,7 @@ export default {
   name: 'CreateView',
   data: function () {
     return {
-      questionArray: [],
+      finishedQuiz: {name: "", listOfQuestions: []},
       questionObject: {questionText: "", questionAnswer: undefined},
       formValidation: false,
 
@@ -104,11 +107,15 @@ export default {
       question: "",
       answers: ["", ""],
       questionNumber: 0,
+      nameOfGame: {},
       data: {},
       uiLabels: {}
     }
   },
   created: function () {
+
+    this.finishedQuiz.name=prompt("What would you like to call the game?")
+    console.log(this.finishedQuiz.name)
     this.lang = this.$route.params.lang;
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
@@ -119,7 +126,9 @@ export default {
     )
     socket.on("pollCreated", (data) =>
         this.data = data)
+
   },
+
   methods: {
     // createPoll: function () {
     //   socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
@@ -127,13 +136,13 @@ export default {
     addQuestion: function () {
       if(this.formValidation===true) {
         const question = Object.assign({}, this.questionObject)
-        this.questionArray.push(question)
-        console.log(this.questionArray)
-        socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers})
+        this.finishedQuiz.listOfQuestions.push(question)
+        console.log(this.finishedQuiz.listOfQuestions)
+        // socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers})
       }
-      else{
-        console.log("validate")
-      }
+
+      this.questionObject.questionText= "";
+      this.questionObject.questionAnswer =  undefined;
     },
     // addAnswer: function () {
     //   this.answers.push("");
@@ -141,17 +150,19 @@ export default {
     // runQuestion: function () {
     //   socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
     // },
+
     deleteQuestion: function (index) {
-      this.questionArray.splice(index, 1)
+      this.finishedQuiz.listOfQuestions.splice(index, 1)
     },
     validateForm: function () {
       if (this.questionObject.questionAnswer === undefined ||
           this.questionObject.questionText === "") {
         return this.formValidation=false;
-      } else {
+      }
+      else {
         return this.formValidation = true;
       }
-    }
+    },
   }
 }
 </script>

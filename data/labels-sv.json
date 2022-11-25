@@ -7,4 +7,17 @@
 	"question": "Fråga",
 	"changeLanguage": "Change to English",
 
+
+
+	"CREATEVIEW": "",
+	"createYourQuestions": "Skapa dina frågor",
+	"question": "Fråga",
+	"questionList": "Frågelista",
+	"answer": "Svar",
+	"yes": "Ja",
+	"no": "Nej",
+	"addYourQuestion": "Lägg till fråga",
+	"playGame": "Spela",
+	"saveGame": "Spara",
+	"goBack": "Tillbaka"
 }

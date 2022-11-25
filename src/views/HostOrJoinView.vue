@@ -1,23 +1,52 @@
 <template>
   <body>
-  <div style="margin: 2em">
-    <router-link v-bind:to="'/'"><button>Back</button></router-link>
-  </div>
+
   <div>
 
-    <router-link v-bind:to="'/gamemode/'"><button>Host</button></router-link>
+    <router-link v-bind:to="'/gamemode/'"><button>{{ uiLabels.hostText }}</button></router-link>
     <br>
-    <router-link v-bind:to="'/clientjoingame/'"><button>Join</button></router-link>
+    <router-link v-bind:to="'/clientjoingame/'"><button>{{ uiLabels.joinText }}</button></router-link>
   </div>
+
+  <footer>
+    <div style="margin: 2em">
+      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">Back</button>
+    </div>
+  </footer>
+
   </body>
 </template>
 
 <script>
+import io from 'socket.io-client';
+const socket = io();
+
 export default {
-  name: "HostOrJoinView"
+  name: "HostOrJoinView",
+  data: function () {
+    return {
+      uiLabels: {},
+      lang: ""
+    }
+  },
+
+  created: function () {
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    })
+  },
 }
 </script>
 
 <style scoped>
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: rgb(253,52,76);
+  background: radial-gradient(circle, rgba(253,52,76,1) 35%, rgba(182,49,65,1) 90%);
+
+}
 
 </style>

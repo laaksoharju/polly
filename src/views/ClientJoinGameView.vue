@@ -1,8 +1,8 @@
 <template>
+
+  <body>
   <div>
-    <div style="margin: 2em">
-      <router-link v-bind:to="'/hostorjoin'"><button>Back</button></router-link>
-    </div>
+
 
     <!-- view text-->
     <div>
@@ -29,6 +29,12 @@
     <!-- Button for joining game -->
     <router-link v-bind:to="'/lobby'"><button>Join Game </button></router-link>
   </div>
+  <footer>
+    <div style="margin: 2em">
+      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">Back</button>
+    </div>
+  </footer>
+  </body>
 </template>
 
 <script>
