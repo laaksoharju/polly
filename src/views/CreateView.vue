@@ -28,13 +28,13 @@
 
         </div>
 
-        <button v-on:click="validateForm();addQuestion()">
+        <button class="questionButtons" v-on:click="validateForm();addQuestion()">
           {{uiLabels.addYourQuestion}}
         </button>
 
         <div class = "playButton">
           <router-link v-bind:to="'//'">
-            <button>
+            <button class="questionButtons" >
               {{uiLabels.playGame}}
             </button>
           </router-link>
@@ -43,7 +43,7 @@
         <div class = "saveButton">
 
           <router-link v-bind:to="'//'">
-            <button>
+            <button class="questionButtons" >
               {{uiLabels.saveGame}}
             </button>
           </router-link>
@@ -180,25 +180,48 @@ body {
 h2  {
   color: #00C3BA;
   -webkit-text-stroke: 2px black;
-  font-size: 5em;
+  font-size: 4em;
 
 }
 
 .pageGrid{
+  padding: 20px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   width: 90em;
-  height: 90vh;
+  height: 30em;
 }
 
+.questionButtons{
+  font-family: "Trebuchet MS",serif;
+  color: #FEF9CC;
+  background-color: #1F6E77;
+  /*-webkit-text-stroke: 1px black;*/
+  cursor: pointer;
+  width: 10vw;
+  height: 5vh;
+  margin: 20px;
+  font-size: 1vw;
+  border-radius: 1vw;
+  border-color: #2B211B;
+  border-width: 0.2vw;
+  border-style: solid ;
+  transition-duration: 0.15s;
+
+}
+button:hover{
+  background-color: #00C3BA;
+  border-width: 0.2vw;
+  color: #FEF9CC;
+
+}
 .questionListWrapper {
+  color: #2B211B;
   background-color: white;
   order: 0;
   width: 20em;
-  height: 25em;
-  margin-left: 2em;
-  margin-right: 2em;
+  height: 30em;
   overflow: auto;
 
 }
@@ -209,6 +232,7 @@ h2  {
   order: 1;
   margin-left: 2em;
   margin-right: 2em;
+  text-align: center;
 
 }
 
