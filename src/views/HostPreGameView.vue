@@ -1,10 +1,11 @@
 <template>
   <body>
-  <div style="margin: 2em">
-    <router-link v-bind:to="'/hostorjoin'"><button>Back</button></router-link>
-  </div>
+
  <div>
-   Host pre game
+   <p>Host pre game</p>
+ </div>
+ <div style="margin: 2em">
+   <router-link v-bind:to="'/poll/:id'"><button type="submit" v-on:click="starter">start</button></router-link>
  </div>
 
   <footer>
@@ -16,9 +17,28 @@
 </template>
 
 <script>
+//import io from 'socket.io-client'
+
+//const socket = io();
+
 export default {
-  name: "HostPreGame"
+  name: "HostPreGame",
+  data: function () {
+    return {
+
+    }
+  },
+
+  methods:{
+   /* setTrue: function (){
+      this.startButton = true
+    },
+    starter: function (){
+      socket.emit("setTrue")
+    }*/
+  }
 }
+
 </script>
 
 <style scoped>
