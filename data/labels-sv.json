@@ -1,4 +1,8 @@
 {
+
+	"STARTVIEW": "",
+	"playTheGame": "SPELA",
+	"createTheGame": "SKAPA",
 	"gameTitle": "Stämmer det?",
 	"sales-pitch": "Svar. Helt. Enkelt.",
 	"invite": "Bjud in deltagare med den här länken:",
@@ -19,5 +23,10 @@
 	"addYourQuestion": "Lägg till fråga",
 	"playGame": "Spela",
 	"saveGame": "Spara",
+	"goBack": "Tillbaka",
+
+	"HOSTORJOINVIEW": "",
+	"hostAGame": "Skapa en lobby",
+	"joinAGame": "Gå med i en lobby",
 	"goBack": "Tillbaka"
 }
