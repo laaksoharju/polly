@@ -5,6 +5,7 @@
 
     <div class="pageGrid">
       <div class="questionToolWrapper">
+        <h3>{{ this.finishedQuiz.name }}</h3>
         {{uiLabels.question}}:
         <input type="text" v-model="questionObject.questionText">
         <div>
@@ -53,7 +54,7 @@
       <div class = "questionListWrapper">
         <h3>{{uiLabels.questionList}}</h3>
         <hr>
-        <div class="questionList" v-for="(question,index) in questionArray"
+        <div class="questionList" v-for="(question,index) in finishedQuiz.listOfQuestions"
              v-bind:key="question">
           <li>
             <button v-on:click="deleteQuestion(index)">X</button>
@@ -83,7 +84,7 @@
   </div>
   <footer>
     <div style="margin: 2em">
-      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1); goBack();">{{uiLabels.goBack}}</button>
+      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">{{uiLabels.goBack}}</button>
     </div>
   </footer>
   </body>
@@ -97,7 +98,7 @@ export default {
   name: 'CreateView',
   data: function () {
     return {
-      questionArray: [],
+      finishedQuiz: {name: "", listOfQuestions: []},
       questionObject: {questionText: "", questionAnswer: undefined},
       formValidation: false,
 
@@ -106,11 +107,15 @@ export default {
       question: "",
       answers: ["", ""],
       questionNumber: 0,
+      nameOfGame: {},
       data: {},
       uiLabels: {}
     }
   },
   created: function () {
+
+    this.finishedQuiz.name=prompt("What would you like to call the game?")
+    console.log(this.finishedQuiz.name)
     this.lang = this.$route.params.lang;
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
@@ -121,7 +126,9 @@ export default {
     )
     socket.on("pollCreated", (data) =>
         this.data = data)
+
   },
+
   methods: {
     // createPoll: function () {
     //   socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
@@ -129,14 +136,14 @@ export default {
     addQuestion: function () {
       if(this.formValidation===true) {
         const question = Object.assign({}, this.questionObject)
-        this.questionArray.push(question)
-        console.log(this.questionArray)
-        socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers})
+        this.finishedQuiz.listOfQuestions.push(question)
+        console.log(this.finishedQuiz.listOfQuestions)
+        // socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers})
       }
 
       this.questionObject.questionText= "";
       this.questionObject.questionAnswer =  undefined;
-      },
+    },
     // addAnswer: function () {
     //   this.answers.push("");
     // },
@@ -145,7 +152,7 @@ export default {
     // },
 
     deleteQuestion: function (index) {
-      this.questionArray.splice(index, 1)
+      this.finishedQuiz.listOfQuestions.splice(index, 1)
     },
     validateForm: function () {
       if (this.questionObject.questionAnswer === undefined ||
@@ -156,12 +163,6 @@ export default {
         return this.formValidation = true;
       }
     },
-    goBack: function () {
-      socket.emit("pageLoaded", this.lang);
-      socket.on("init", (labels) => {
-        this.uiLabels = labels
-      })
-    }
   }
 }
 </script>
