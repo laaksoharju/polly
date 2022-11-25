@@ -10,7 +10,8 @@ function sockets(io, socket, data) {
   });
 
   socket.on('createPoll', function(d) {
-    socket.emit('pollCreated', data.createPoll(d.pollId, d.lang));
+    console.log(d)
+    socket.emit('pollCreated', data.createPoll(d));
   });
 
   socket.on('addQuestion', function(d) {
