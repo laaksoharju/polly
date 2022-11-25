@@ -36,6 +36,10 @@ Data.prototype.addQuestion = function(gameId, q) {
   }
 }
 
+Data.prototype.getQuizzes= function (){
+  return this.finishedQuizzes;
+}
+
 // Data.prototype.createPoll = function(gameId, lang="en")
 //   if (typeof this.finishedQuizzes[gameId] === "undefined") {
 //     let poll = {};
