@@ -2,7 +2,6 @@
   <body>
 
   <div>
-
     <router-link v-bind:to="'/gamemode/'"><button>{{ uiLabels.hostText }}</button></router-link>
     <br>
     <router-link v-bind:to="'/clientjoingame/'"><button>{{ uiLabels.joinText }}</button></router-link>
