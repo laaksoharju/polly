@@ -2,12 +2,12 @@
   <body>
   <div>
     <div>
-      <h3>Choose a saved game or edit one</h3>
+      <h3>{{uiLabels.chooseOrEdit}}</h3>
       <ul>
         <li>
-          Game name..
-          <router-link v-bind:to="'/hostpregame'"><button>Start</button></router-link>
-          <router-link v-bind:to="'/create/'+id"><button>Edit</button></router-link>
+          {{uiLabels.theGamesName}}
+          <router-link v-bind:to="'/hostpregame/'+lang"><button>{{uiLabels.startTheGame}}</button></router-link>
+          <router-link v-bind:to="'/create/'+lang"><button>{{uiLabels.editTheGame}}</button></router-link>
         </li>
       </ul>
     </div>
@@ -21,8 +21,26 @@
 </template>
 
 <script>
+import io from 'socket.io-client';
+const socket = io();
+
 export default {
-  name: "SelectSavedGame"
+  name: "SelectSavedGame",
+
+  data: function () {
+    return {
+      uiLabels: {},
+      lang: "",
+    }
+  },
+  created: function () {
+    this.lang = this.$route.params.lang;
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+
+    })
+  },
 }
 </script>
 

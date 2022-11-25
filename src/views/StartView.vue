@@ -55,6 +55,7 @@ export default {
     }
   },
   created: function () {
+    socket.emit("switchLanguage", this.lang)
     socket.on("init", (labels) => {
       this.uiLabels = labels
     })
