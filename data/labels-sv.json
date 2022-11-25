@@ -27,5 +27,6 @@
 
 	"HOSTORJOINVIEW": "",
 	"hostAGame": "Skapa en lobby",
-	"joinAgame": "Gå med i en lobby"
+	"joinAGame": "Gå med i en lobby",
+	"goBack": "Tillbaka"
 }

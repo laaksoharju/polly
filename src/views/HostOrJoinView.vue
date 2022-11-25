@@ -5,12 +5,12 @@
 
     <router-link v-bind:to="'/gamemode/'"><button>{{uiLabels.hostAGame}}</button></router-link>
     <br>
-    <router-link v-bind:to="'/clientjoingame/'"><button>Join</button></router-link>
+    <router-link v-bind:to="'/clientjoingame/'"><button>{{uiLabels.joinAGame}}</button></router-link>
   </div>
 
   <footer>
     <div style="margin: 2em">
-      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">Back</button>
+      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">{{uiLabels.goBack}}</button>
     </div>
   </footer>
 
@@ -32,7 +32,7 @@ export default {
     }
   },
   created: function () {
-
+     this.lang = this.$route.params.lang;
      socket.emit("pageLoaded", this.lang);
      socket.on("init", (labels) => {
        this.uiLabels = labels

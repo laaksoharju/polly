@@ -28,6 +28,7 @@
 
 	"HOSTORJOINVIEW": "",
 	"hostAGame": "Host a lobby",
-	"joinAGame": "Join a lobby"
+	"joinAGame": "Join a lobby",
+	"goBack": "Back"
 
 }

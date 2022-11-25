@@ -8,7 +8,7 @@ const routes = [
     component: StartView
   },
   {
-    path: '/hostorjoin',
+    path: '/hostorjoin/:lang',
     name: 'HostOrJoinView',
     component: () => import(/* webpackChunkName: "about" */ '../views/HostOrJoinView.vue')
   },
