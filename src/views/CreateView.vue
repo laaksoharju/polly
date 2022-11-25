@@ -103,19 +103,21 @@ export default {
       formValidation: false,
 
       lang: "",
-      pollId: "",
+      gameId: "",
       question: "",
       answers: ["", ""],
       questionNumber: 0,
-      nameOfGame: {},
       data: {},
       uiLabels: {}
     }
   },
   created: function () {
 
-    this.finishedQuiz.name=prompt("What would you like to call the game?")
-    console.log(this.finishedQuiz.name)
+    this.gameId=prompt("Choose game ID")
+    console.log(this.gameId)
+    socket.emit('createPoll', this.gameId)
+
+
     this.lang = this.$route.params.lang;
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {

@@ -1,7 +1,8 @@
 <template>
   <body>
 <div>
-  <router-link v-bind:to="'/clientjoingame/'"><button>Back</button></router-link>
+  <button>Ready</button><br>
+  <router-link v-bind:to="'/poll/:id'"><button>start</button></router-link>
   <div>
     <p>#nickname</p>
     <router-link v-bind:to="'/poll/:id'"><button>Start</button></router-link>
