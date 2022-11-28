@@ -31,9 +31,8 @@ Data.prototype.createPoll = function(gameId) {
 Data.prototype.addQuestion = function(gameId, q) {
   const poll = this.finishedQuizzes[gameId];
   console.log("question added to", gameId, q);
-  if (typeof poll !== 'undefined') {
-    poll.questionList.push(q);
-  }
+  poll.questionList.push(q);
+
 }
 
 Data.prototype.getQuizzes= function (){

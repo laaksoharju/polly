@@ -137,10 +137,11 @@ export default {
     // },
     addQuestion: function () {
       if(this.formValidation===true) {
-        const question = Object.assign({}, this.questionObject)
-        this.finishedQuiz.listOfQuestions.push(question)
+        // const question = Object.assign({}, this.questionObject)
+
+        this.finishedQuiz.listOfQuestions.push(this.questionObject)
         console.log(this.finishedQuiz.listOfQuestions)
-        // socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers})
+        socket.emit("addQuestion", {gameId: this.gameId, q: this.questionObject})
       }
 
       this.questionObject.questionText= "";

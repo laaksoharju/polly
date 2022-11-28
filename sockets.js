@@ -19,7 +19,7 @@ function sockets(io, socket, data) {
   })
 
   socket.on('addQuestion', function(d) {
-    socket.emit('dataUpdate', data.addQuestion(d.gameId,d.questionObject));
+    socket.emit('dataUpdate', data.addQuestion(d.gameId,d.q));
   });
 
   socket.on('editQuestion', function(d) {
