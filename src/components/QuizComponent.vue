@@ -4,17 +4,19 @@
       <span class="gameId">{{ quiz.gameId}}</span>
     </div>
     <div class="gameDescription">
-      <p v-if="this.numberOfQuestions>1">{{this.numberOfQuestions+" questions"}}</p>
-      <p v-if="this.numberOfQuestions===1">{{this.numberOfQuestions+" question"}}</p>
+      <p v-if="this.numberOfQuestions>1">{{this.numberOfQuestions+ " " + uiLabels.questions}}</p>
+      <p v-if="this.numberOfQuestions===1">{{this.numberOfQuestions+ " " + uiLabels.questions}}</p>
     </div>
     <div class="gameDetails">
-      <button class="playEditButtons">PLAY</button><button class="playEditButtons">EDIT</button>
+      <button class="playEditButtons">{{uiLabels.playAGame}}</button><button class="playEditButtons">{{uiLabels.editTheGame}}</button>
     </div>
   </div>
 
 </template>
 
 <script>
+import io from 'socket.io-client';
+const socket = io();
 
 
 export default {
@@ -24,11 +26,19 @@ export default {
     quiz: Object
   },
   created: function(){
+    this.lang = this.$route.params.lang;
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+
+    })
     this.numberOfQuestions=this.quiz.questionList.length;
   },
   data: function(){
     return{
-    numberOfQuestions: 0
+    numberOfQuestions: 0,
+      uiLabels: {},
+      lang: "",
     }
   }
 }

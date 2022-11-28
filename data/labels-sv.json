@@ -39,6 +39,9 @@
 	"theGamesName": "Spelets namn...",
 	"startTheGame": "Start",
 	"editTheGame": "Redigera",
+	"playAGame": "Spela",
+	"goBack": "Tillbaka",
+	"questions": "frågor",
 
 	"CLIENTJOINGAMEVIEW": "",
 	"enterID": "Fyll i spel-ID",

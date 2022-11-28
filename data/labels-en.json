@@ -40,6 +40,9 @@
 	"theGamesName": "Game name...",
 	"startTheGame": "Start",
 	"editTheGame": "Edit",
+	"playAGame": "Play",
+	"goBack": "Back",
+	"questions": "questions",
 
 	"CLIENTJOINGAMEVIEW": "",
 	"enterID": "Enter game-ID",
