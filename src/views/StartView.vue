@@ -17,6 +17,12 @@
     <input type="text" v-model="id">
   </label>
   <router-link v-bind:to="'/poll/'+id">{{uiLabels.participatePoll}}</router-link> 
+ <label>
+  
+    Write poll id: 
+    <input type="text" v-model="id">
+  </label>
+  <router-link v-bind:to="'/nickname/'+id">{{uiLabels.participatePoll}}</router-link> 
 </body>
 </template>
 
@@ -58,14 +64,14 @@ export default {
 }
 </script>
 <style scoped>
-  body {
+  /*body {
     background-color: rgb(161, 255, 160);
     width: 100%;
     display: grid;
     grid-template-columns: 2em auto;
     min-height: 100vh;
   }
-
+  */
   .logo {
     text-transform: uppercase;
     margin: 300px;
