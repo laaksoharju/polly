@@ -1,18 +1,17 @@
 <template>
   <body>
 
-  <div>
-
-    <router-link v-bind:to="'/gamemode/'"><button>{{uiLabels.hostAGame}}</button></router-link>
-    <br>
-    <router-link v-bind:to="'/clientjoingame/'"><button>{{uiLabels.joinAGame}}</button></router-link>
-  </div>
-
-  <footer>
-    <div style="margin: 2em">
-      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">{{uiLabels.goBack}}</button>
+    <div>
+      <router-link v-bind:to="'/gamemode/'" ><button>{{uiLabels.hostAGame}}</button></router-link>
+      <br>
+      <router-link v-bind:to="'/clientjoingame/'"><button>{{uiLabels.joinAGame}}</button></router-link>
     </div>
-  </footer>
+
+    <footer>
+      <div style="margin: 2em">
+        <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">{{uiLabels.goBack}}</button>
+      </div>
+    </footer>
 
   </body>
 </template>
