@@ -6,7 +6,7 @@
   <BarsComponent v-bind:data="data"/>
   <footer>
     <div style="margin: 2em">
-      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">Back</button>
+      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">{{uiLabels.goBack}}</button>
     </div>
   </footer>
   </body>
@@ -26,8 +26,10 @@ export default {
   data: function () {
     return {
       question: "",
-      data: {
-      }
+      data: {},
+      uiLabels: {},
+      lang: "",
+
     }
   },
   created: function () {
@@ -40,7 +42,12 @@ export default {
     socket.on("newQuestion", update => {
       this.question = update.q;
       this.data = {};
+    });
+    this.lang = this.$route.params.lang;
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
     })
-  }
+  },
 }
 </script>

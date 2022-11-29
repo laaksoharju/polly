@@ -4,7 +4,7 @@ const languages = ["en", "se"];
 
 // Store data in an object to keep the global namespace clean
 function Data() {
-  this.finishedQuizzes = {};
+  this.finishedQuizzes = [];
 }
 
 /***********************************************
@@ -20,20 +20,28 @@ Data.prototype.getUILabels = function (lang = "en") {
 
 Data.prototype.createPoll = function(gameId) {
   console.log(gameId)
-  let finishedQuiz = {gameId:"",questionList:[]}
-  finishedQuiz.gameId=gameId
-  this.finishedQuizzes[gameId]=finishedQuiz
+  let finishedQuiz = {gameId: gameId,questionList:[]}
+  // this.finishedQuizzes[gameId]=finishedQuiz
+  this.finishedQuizzes.push(finishedQuiz)
   console.log(finishedQuiz)
   console.log(this.finishedQuizzes)
   return finishedQuiz
 }
 
 Data.prototype.addQuestion = function(gameId, q) {
-  const poll = this.finishedQuizzes[gameId];
-  console.log("question added to", gameId, q);
-  if (typeof poll !== 'undefined') {
-    poll.questionList.push(q);
+  let poll = [];
+  for(let i=0;i<this.finishedQuizzes.length;i++){
+    if (this.finishedQuizzes[i].gameId===gameId){
+      poll = this.finishedQuizzes[i];
+      poll.questionList.push(q);
+      console.log("question added to", gameId, q);
+      console.log(poll.questionList)
+    }
   }
+}
+
+Data.prototype.getQuizzes= function (){
+  return this.finishedQuizzes;
 }
 
 // Data.prototype.createPoll = function(gameId, lang="en")
