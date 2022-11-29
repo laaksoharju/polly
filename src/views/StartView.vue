@@ -8,15 +8,15 @@
   <ResponsiveNav v-bind:hideNav="hideNav">
     <button id="language" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
     <router-link id="create" v-bind:to="'/create/'+lang">{{uiLabels.createPoll}}</router-link>
-    <router-link id="join" v-bind:to="'/join/'+lang">{{uiLabels.participatePoll}}</router-link>
+    <!--<router-link id="join" v-bind:to="'/join/'+lang">{{uiLabels.participatePoll}}</router-link>-->
  
   </ResponsiveNav> 
 
-  <!--<label>
+  <label>
     Write poll id: 
     <input type="text" v-model="id">
   </label>
-  <router-link v-bind:to="'/poll/'+id">{{uiLabels.participatePoll}}</router-link> -->
+  <router-link v-bind:to="'/poll/'+id">{{uiLabels.participatePoll}}</router-link> 
 </body>
 </template>
 

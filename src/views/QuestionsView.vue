@@ -1,10 +1,6 @@
 <template>
     <div>
-      Poll link: 
-      <input type="text" v-model="pollId">
-      <button v-on:click="createPoll">
-        Create poll
-      </button>
+        <h1>{{uiLabels.createQuestions}}</h1>
       <div>
         {{uiLabels.question}}:
         <input type="text" v-model="question">
@@ -35,7 +31,7 @@
   const socket = io();
   
   export default {
-    name: 'CreateView',
+    name: 'QuestionsView',
     data: function () {
       return {
         lang: "",
@@ -44,7 +40,7 @@
         answers: ["", ""],
         questionNumber: 0,
         data: {},
-        uiLabels: {}
+        uiLabels: {},
       }
     },
     created: function () {
@@ -59,10 +55,8 @@
       socket.on("pollCreated", (data) =>
         this.data = data)
     },
+
     methods: {
-      createPoll: function () {
-        socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
-      },
       addQuestion: function () {
         socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )
       },
@@ -71,8 +65,12 @@
       },
       runQuestion: function () {
         socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
-      }
+      },
+      //createQuestions: function () {
+       // socket.emit("createQuestions", {pollId: this.pollId, question: question})
+      //}
     }
   }
+
   </script>
   
