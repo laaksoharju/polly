@@ -9,13 +9,6 @@
                        v-bind:key="quiz.gameId">
         </QuizComponent>
       </div>
-      <ul>
-        <li>
-          {{uiLabels.theGamesName}}
-          <router-link v-bind:to="'/hostpregame/'+lang"><button>{{uiLabels.startTheGame}}</button></router-link>
-          <router-link v-bind:to="'/create/'+lang"><button>{{uiLabels.editTheGame}}</button></router-link>
-        </li>
-      </ul>
     </div>
   </div>
 
