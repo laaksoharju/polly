@@ -6,41 +6,62 @@
 
     <!-- view text-->
     <div>
-      Enter game-ID
+      {{uiLabels.enterID}}
     </div>
 
     <!-- Text field where you enter nickname -->
     <form>
       <p>
         <label for="gameid"></label> <br>
-        <input type="text" placeholder="#game-ID">
+        <input type="text" v-bind:placeholder="uiLabels.enterNick">
       </p>
     </form>
   <div>
-    Who are you?
+    {{uiLabels.userName}}
   </div>
     <form>
       <p>
         <label for="nickname"></label> <br>
-        <input type="text" placeholder="enter nickname...">
+        <input type="text" v-bind:placeholder="uiLabels.gameID">
       </p>
     </form>
 
     <!-- Button for joining game -->
-    <router-link v-bind:to="'/lobby'"><button>Join Game </button></router-link>
+    <router-link v-bind:to="'/lobby/'+lang"><button>{{uiLabels.joinGame}} </button></router-link>
   </div>
   <footer>
     <div style="margin: 2em">
-      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">Back</button>
+      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">{{uiLabels.goBack}}</button>
     </div>
   </footer>
   </body>
 </template>
 
 <script>
+import io from 'socket.io-client';
+const socket = io();
+
 export default {
-  name: "ClientJoinGameView"
+  name: "ClientJoinGameView",
+
+  data: function () {
+    return {
+      uiLabels: {},
+      lang: "",
+    }
+  },
+  created: function () {
+    this.lang = this.$route.params.lang;
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+
+    })
+  },
 }
+
+
+
 </script>
 
 <style scoped>

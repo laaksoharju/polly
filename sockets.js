@@ -15,9 +15,12 @@ function sockets(io, socket, data) {
     socket.emit('pollCreated', data.createPoll(d));
   });
 
+  socket.on('getQuizzes', function() {
+    socket.emit('returnQuizzes', data.getQuizzes())
+  })
+
   socket.on('addQuestion', function(d) {
-    data.addQuestion(d.pollId, {q: d.q, a: d.a});
-    socket.emit('dataUpdate', data.getAnswers(d.pollId));
+    socket.emit('dataUpdate', data.addQuestion(d.gameId,d.q));
   });
 
   socket.on('editQuestion', function(d) {

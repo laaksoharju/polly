@@ -8,7 +8,7 @@
   </div>
   <footer>
     <div style="margin: 2em">
-      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">Back</button>
+      <button style="position:absolute; bottom:100px;" v-on:click="this.$router.go(-1)">{{uiLabels.goBack}}</button>
     </div>
 
   </footer>
@@ -34,10 +34,19 @@ export default {
         q: "",
         a: []
       },
-      pollId: "inactive poll"
+      pollId: "inactive poll",
+      uiLabels: {},
+      lang: "",
     }
   },
   created: function () {
+
+    this.lang = this.$route.params.lang;
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    }),
+
     this.pollId = this.$route.params.id
     socket.emit('joinPoll', this.pollId)
     socket.on("newQuestion", q =>

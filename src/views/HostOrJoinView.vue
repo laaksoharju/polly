@@ -3,9 +3,9 @@
 
   <div>
 
-    <router-link v-bind:to="'/gamemode/'"><button>{{uiLabels.hostAGame}}</button></router-link>
+    <router-link v-bind:to="'/choosegamemode/'+lang"><button>{{uiLabels.hostAGame}}</button></router-link>
     <br>
-    <router-link v-bind:to="'/clientjoingame/'"><button>{{uiLabels.joinAGame}}</button></router-link>
+    <router-link v-bind:to="'/clientjoingame/'+lang"><button>{{uiLabels.joinAGame}}</button></router-link>
   </div>
 
   <footer>
