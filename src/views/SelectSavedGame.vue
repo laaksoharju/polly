@@ -4,6 +4,9 @@
     <div>
       <h3>Choose a saved game or edit one</h3>
       <ul>
+        <li >
+
+        </li>
         <li>
           Game name..
           <router-link v-bind:to="'/hostpregame'"><button>Start</button></router-link>
