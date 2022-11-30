@@ -64,14 +64,14 @@ export default {
 }
 </script>
 <style scoped>
-  /*body {
+  body {
     background-color: rgb(161, 255, 160);
     width: 100%;
     display: grid;
     grid-template-columns: 2em auto;
     min-height: 100vh;
   }
-  */
+  
   .logo {
     text-transform: uppercase;
     margin: 300px;
