@@ -19,6 +19,10 @@ function sockets(io, socket, data) {
     socket.emit('returnQuizzes', data.getQuizzes())
   })
 
+  socket.on('removeQuiz', function(d){
+    socket.emit('quizRemoved', data.removeQuiz(d))
+  })
+
   socket.on('addQuestion', function(d) {
     socket.emit('dataUpdate', data.addQuestion(d.gameId,d.q));
   });
